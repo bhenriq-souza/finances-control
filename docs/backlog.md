@@ -10,10 +10,7 @@ Quando o kit agentic estiver instalado no backend (FCB-001), as tarefas de códi
   - What: avaliar candidatos e registrar decisão de stack do frontend
   - Where: `docs/adr/ADR-0001-frontend.md`
   - Done when: ADR com status `accepted` e alternativas registradas
-- [ ] **FC-002 — Decidir ADR-0003 (estilo arquitetural) e ADR-0005 (queue)**
-  - What: monolito modular vs microservices; necessidade (ou adiamento) de broker
-  - Where: `docs/adr/ADR-0003-architecture-style.md`, `docs/adr/ADR-0005-queue.md`
-  - Done when: ambos `accepted`
+- [x] **FC-002 — Decidir ADR-0003 (estilo arquitetural) e ADR-0005 (queue)** — feito: monolito modular com fronteiras verificadas por gate; eventos de domínio in-process, `pg-boss` para trabalho assíncrono, broker dedicado adiado com gatilhos explícitos
 - [ ] **FC-003 — Aprovar ADR-0006 (auth)**
   - What: revisar proposta Firebase Auth e aprovar ou substituir
   - Where: `docs/adr/ADR-0006-auth.md`
@@ -26,7 +23,7 @@ Quando o kit agentic estiver instalado no backend (FCB-001), as tarefas de códi
 
 ## Fase 1 — Walking skeleton
 
-- [ ] **FCB-002 — Scaffold do app** (padrão `ts-express-app`: Express 5, tsyringe, TypeORM, zod, swagger, pacotes `@bhs-dev`; endpoint `/health`)
+- [ ] **FCB-002 — Scaffold do app** (padrão `ts-express-app`: Express 5, tsyringe, TypeORM, zod, swagger, pacotes `@bhs-dev`; endpoint `/health`; estrutura de módulos e gate de fronteiras conforme ADR-0003)
 - [ ] **FCB-003 — Registrar repo no WIF do GCP** (tfvars `github_allowed_repositories` no `homelab-infra` + `terraform apply`; secrets `GCP_WIF_PROVIDER`, `GCP_SERVICE_ACCOUNT`, `GITOPS_PAT` no repo)
 - [ ] **FCB-004 — CI/CD: caller workflow** (Dockerfile + caller do reusable `docker-build-push.yaml`; push em `develop` publica imagem `sha-*` no Artifact Registry)
 - [ ] **FCB-005 — Manifests no homelab-gitops** (deployment com label `homelab.io/database-access: postgresql`, service, ingress `ingressClassName: traefik` em `finances.dev.homelab.local`, ExternalSecret; registrar no kustomization de dev)
@@ -40,4 +37,6 @@ Quando o kit agentic estiver instalado no backend (FCB-001), as tarefas de códi
 - [ ] **FCB-010 — Spec + implementação F004**: faturas de cartão de crédito
 - [ ] **FCB-011 — Spec + implementação F005**: receitas
 - [ ] **FCB-012 — Saldo previsto e relatórios**
+- [ ] **FCB-014 — Dispatcher de eventos de domínio in-process** (interface na camada `platform`, dispatch pós-commit, preparada para outbox — ADR-0005; precede FCB-009)
 - [ ] **FCB-013 — Importação CSV** (bancos/contas/cartões, despesas, receitas)
+- [ ] **FCB-015 — Jobs assíncronos e agendados com `pg-boss`** (worker de importação, Aberto→Vencido, fechamento de fatura, recorrência mensal — ADR-0005)
