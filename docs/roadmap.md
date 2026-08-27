@@ -9,8 +9,8 @@ Repos, método e decisões de base.
 **Done when:**
 - [x] Repo hub `finances-control` criado com docs organizados (requisitos, ADRs, roadmap, backlog)
 - [x] Repo `finances-control-backend` criado
-- [ ] Board (GitHub Projects v2) criado, agregando issues dos repos
-- [x] Wiki do hub publicada
+- [ ] Board (GitHub Projects v2) criado, agregando issues dos repos — FC-004
+- [ ] Wiki do hub publicada (conteúdo pronto; aguarda criação da primeira página na UI do GitHub)
 - [ ] Kit agentic-driven instalado no backend (`AGENTS.md`, spec-process, workflow git, skills, PR template) — FCB-001
 - [ ] ADRs abertos decididos: ADR-0001 (frontend), ADR-0003 (estilo arquitetural), ADR-0005 (queue), ADR-0006 (auth) — FC-001/FC-002/FC-003
 
