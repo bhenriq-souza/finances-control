@@ -18,10 +18,7 @@ Quando o kit agentic estiver instalado no backend (FCB-001), as tarefas de códi
   - What: revisar proposta Firebase Auth e aprovar ou substituir
   - Where: `docs/adr/ADR-0006-auth.md`
   - Done when: status `accepted` (ou novo ADR superseding)
-- [ ] **FC-004 — Criar board Projects v2**
-  - What: board "Finances Control" no nível do usuário, agregando issues de finances-control e finances-control-backend
-  - Where: GitHub Projects (requer escopo `project` no gh: `gh auth refresh -h github.com -s project`)
-  - Done when: board criado com todas as issues FC-*/FCB-* adicionadas e colunas Todo/In Progress/Done
+- [x] **FC-004 — Criar board Projects v2** — feito: [Finances Control](https://github.com/users/bhenriq-souza/projects/2), 17 issues em Todo
 - [ ] **FCB-001 — Seed do kit agentic-driven no backend**
   - What: `AGENTS.md`, `CLAUDE.md` stub, `specs/0000-spec-process.md`, `specs/00xx-development-workflow.md`, skills `.claude/skills/{new-spec,implement-task,check,finish-task}`, `docs/backlog.md`, PR template, CODEOWNERS; branch protection com ativação faseada do required check
   - Where: `finances-control-backend` (fonte: `~/code/Personal/langgraph-agents`)
