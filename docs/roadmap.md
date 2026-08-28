@@ -19,11 +19,15 @@ Repos, método e decisões de base.
 Provar o caminho código → imagem → cluster antes de qualquer feature. Será a **primeira validação ponta a ponta do CI/CD do homelab**.
 
 **Done when:**
-- [ ] Backend scaffolded no padrão `ts-express-app` + `@bhs-dev`, com endpoint de health — FCB-002
-- [ ] Repo registrado no WIF do GCP e secrets configurados — FCB-003
-- [ ] Push em `develop` builda e publica imagem no Artifact Registry via GitHub Actions — FCB-004
-- [ ] Manifests no `homelab-gitops` e app rodando em `dev-apps` via Argo CD, acessível em `finances.dev.homelab.local` — FCB-005
+- [x] Backend scaffolded no padrão `ts-express-app` + `@bhs-dev`, com endpoint de health — FCB-002
+- [x] Repo registrado no WIF do GCP e secrets configurados — FCB-003
+- [x] Push em `develop` builda e publica imagem no Artifact Registry via GitHub Actions — FCB-004
+- [x] Manifests no `homelab-gitops` e app rodando em `dev-apps` via Argo CD, acessível em `finances.dev.homelab.local` — FCB-005
 - [ ] Database dedicado no PostgreSQL com migration inicial aplicada — FCB-006
+
+**Marco alcançado em 2026-08-28:** o pipeline do homelab rodou de ponta a ponta pela primeira vez. Push em `develop` → imagem `sha-9bd9e07` no Artifact Registry → commit automático no GitOps → Argo CD `Synced/Healthy` → pod `Running` → `GET finances.dev.homelab.local/health` respondendo 200. Antes disso o fluxo nunca havia sido exercitado: a imagem do `myapp` fora publicada manualmente.
+
+Diferenças em relação ao previsto: a credencial de escrita no GitOps virou uma **deploy key SSH por aplicação** em vez de PAT (o GitHub não tem API para criar PAT, e a deploy key tem escopo menor e não expira); e a autorização no WIF exigiu `terraform apply` com `-target`, por causa de um drift preexistente naquele root que planeja destruições em recursos de CI de outro projeto.
 
 ## Fase 2 — Domínio por fatias verticais
 
