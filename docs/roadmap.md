@@ -44,11 +44,13 @@ Cada fatia nasce como spec formal (AC/INV/ERR) e vira tarefas no backlog. A [an�
 6. Saldo previsto e relatórios (FCB-012)
 7. Importação CSV (FCB-013)
 
+**Modo de trabalho (decidido em 2026-09-03):** desenvolvimento em sessão única com subagentes até a spec `0012` (expenses). A revisão dessa spec é o **piloto de Agent Teams** (FC-007): três revisores que debatem entre si, custo único, sem coordenação de código. O primeiro time de implementação só nasce quando duas ou mais specs estiverem aprovadas ao mesmo tempo em módulos disjuntos — candidatos: expenses (FCB-009), earnings (FCB-011) e dispatcher (FCB-014) — e houver agenda para revisar PRs em paralelo. Um teammate por módulo, em worktree e branch próprios; `backlog.md`, `openapi.yaml`, migrations e `platform` ficam com o lead. Times não economizam tokens (custo linear por teammate): compram tempo de calendário e verificação cruzada.
+
 **Done when:** todas as specs `implemented`, endpoints cobertos por testes, API documentada via OpenAPI.
 
 ## Fase 3 — Frontend
 
-Stack decidida no [ADR-0001](adr/ADR-0001-frontend.md): React 19 + Vite, SPA pura servida como imagem estática, mesma origem do backend via `/api`. Repo próprio `finances-control-frontend`, mesmo pipeline (app-name `finances-frontend` no GitOps). Requisito transversal: experiência agradável em desktop, celular e tablet ([requisitos §4](business-requirements.md#4-requisitos-não-funcionais)).
+Stack decidida no [ADR-0001](adr/ADR-0001-frontend.md): React 19 + Vite, SPA pura servida como imagem estática, mesma origem do backend via `/api`. Repo próprio `finances-control-frontend`, mesmo pipeline (app-name `finances-frontend` no GitOps). Requisito transversal: experiência agradável em desktop, celular e tablet ([requisitos §4](business-requirements.md#4-requisitos-não-funcionais)). Fase de maior retorno esperado para Agent Teams — as telas de F001–F005 são rotas e arquivos disjuntos, e o contrato OpenAPI permite frontend e backend em paralelo — condicionada ao go do piloto FC-007.
 
 **Done when:**
 - [ ] Identidade visual e design tokens definidos — FC-006 (pode correr em paralelo à Fase 2)
