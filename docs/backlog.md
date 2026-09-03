@@ -15,6 +15,11 @@ Quando o kit agentic estiver instalado no backend (FCB-001), as tarefas de códi
   - What: revisar proposta Firebase Auth e aprovar ou substituir
   - Where: `docs/adr/ADR-0006-auth.md`
   - Done when: status `accepted` (ou novo ADR superseding)
+- [ ] **FC-005 — Decidir ADR-0007 (representação monetária)**
+  - What: registrar tipo de coluna no PostgreSQL, tipo na aplicação e política de arredondamento para valores monetários
+  - Where: `docs/adr/ADR-0007-monetary-representation.md`
+  - Done when: ADR com status `accepted` e alternativas registradas
+  - Why: nenhum documento do projeto decide isso hoje; a planilha legada acumula resíduo de ponto flutuante em saldo (ver [análise](legacy-spreadsheet-analysis.md#37-falta-decidir-a-representação-monetária))
 - [x] **FC-004 — Criar board Projects v2** — feito: [Finances Control](https://github.com/users/bhenriq-souza/projects/2), 17 issues em Todo
 - [x] **FCB-001 — Seed do kit agentic-driven no backend**
   - What: `AGENTS.md`, `CLAUDE.md` stub, `specs/0000-spec-process.md`, `specs/00xx-development-workflow.md`, skills `.claude/skills/{new-spec,implement-task,check,finish-task}`, `docs/backlog.md`, PR template, CODEOWNERS; branch protection com ativação faseada do required check

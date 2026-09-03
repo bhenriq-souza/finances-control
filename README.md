@@ -19,6 +19,7 @@ Este é o **repositório hub** do produto: concentra requisitos, decisões de ar
 ## Documentação
 
 - [Requisitos de negócio](docs/business-requirements.md) — funcionalidades F001–F005
+- [Análise da planilha legada](docs/legacy-spreadsheet-analysis.md) — dinâmicas e evidências extraídas do sistema em uso, insumo da Fase 2
 - [Perfis de usuário](docs/user-profiles.md) — Admin, Biller, Viewer
 - [Modelo de dados](docs/assets/billing-control-database-schema.jpg) — diagrama inicial
 - [ADRs](docs/adr/README.md) — decisões de arquitetura
