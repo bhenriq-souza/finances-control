@@ -11,8 +11,11 @@ Repos, método e decisões de base.
 - [x] Repo `finances-control-backend` criado
 - [x] Board (GitHub Projects v2) criado, agregando issues dos repos — [Finances Control](https://github.com/users/bhenriq-souza/projects/2)
 - [x] Wiki do hub publicada — [wiki](https://github.com/bhenriq-souza/finances-control/wiki)
-- [ ] Kit agentic-driven instalado no backend (`AGENTS.md`, spec-process, workflow git, skills, PR template) — FCB-001
-- [ ] ADRs abertos decididos: ADR-0001 (frontend), ADR-0003 (estilo arquitetural), ADR-0005 (queue), ADR-0006 (auth) — FC-001/FC-002/FC-003
+- [x] Kit agentic-driven instalado no backend (`AGENTS.md`, spec-process, workflow git, skills, PR template) — FCB-001
+- [x] ADR-0001 (frontend) decidido — FC-001
+- [x] ADR-0003 (estilo arquitetural) e ADR-0005 (queue) decididos — FC-002
+- [ ] ADR-0006 (auth) aprovado — FC-003
+- [ ] ADR-0007 (representação monetária) decidido — FC-005
 
 ## Fase 1 — Walking skeleton
 
@@ -45,7 +48,13 @@ Cada fatia nasce como spec formal (AC/INV/ERR) e vira tarefas no backlog. A [an�
 
 ## Fase 3 — Frontend
 
-Depende do ADR-0001. Repo próprio, mesmo pipeline (app-name separado no GitOps).
+Stack decidida no [ADR-0001](adr/ADR-0001-frontend.md): React 19 + Vite, SPA pura servida como imagem estática, mesma origem do backend via `/api`. Repo próprio `finances-control-frontend`, mesmo pipeline (app-name `finances-frontend` no GitOps). Requisito transversal: experiência agradável em desktop, celular e tablet ([requisitos §4](business-requirements.md#4-requisitos-não-funcionais)).
+
+**Done when:**
+- [ ] Identidade visual e design tokens definidos — FC-006 (pode correr em paralelo à Fase 2)
+- [ ] Repo `finances-control-frontend` criado com o kit agentic-driven, scaffold do ADR-0001 e pipeline validado (tarefas `FCF-*`, a abrir quando o repo existir)
+- [ ] Backend publicado sob `/api` e frontend em `/`, no mesmo host
+- [ ] Telas de F001–F005 e relatórios consumindo a API pelo cliente gerado do OpenAPI, responsivas nos três breakpoints
 
 ## Fase 4 — Promoção a prd
 

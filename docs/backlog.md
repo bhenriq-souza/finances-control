@@ -6,10 +6,7 @@ Quando o kit agentic estiver instalado no backend (FCB-001), as tarefas de códi
 
 ## Fase 0 — Fundações
 
-- [ ] **FC-001 — Decidir ADR-0001 (frontend)**
-  - What: avaliar candidatos e registrar decisão de stack do frontend
-  - Where: `docs/adr/ADR-0001-frontend.md`
-  - Done when: ADR com status `accepted` e alternativas registradas
+- [x] **FC-001 — Decidir ADR-0001 (frontend)** — feito: React 19 + Vite, SPA pura; TanStack Router/Query, react-hook-form + zod, cliente gerado do OpenAPI, Tailwind + shadcn/ui; imagem estática nginx com config em runtime; mesma origem do backend via `/api`
 - [x] **FC-002 — Decidir ADR-0003 (estilo arquitetural) e ADR-0005 (queue)** — feito: monolito modular com fronteiras verificadas por gate; eventos de domínio in-process, `pg-boss` para trabalho assíncrono, broker dedicado adiado com gatilhos explícitos
 - [ ] **FC-003 — Aprovar ADR-0006 (auth)**
   - What: revisar proposta Firebase Auth e aprovar ou substituir
@@ -45,3 +42,11 @@ Quando o kit agentic estiver instalado no backend (FCB-001), as tarefas de códi
 - [ ] **FCB-014 — Dispatcher de eventos de domínio in-process** (interface na camada `platform`, dispatch pós-commit, preparada para outbox — ADR-0005; precede FCB-009)
 - [ ] **FCB-013 — Importação CSV** (bancos/contas/cartões, despesas, receitas)
 - [ ] **FCB-015 — Jobs assíncronos e agendados com `pg-boss`** (worker de importação, Aberto→Vencido, fechamento de fatura, recorrência mensal — ADR-0005)
+
+## Fase 3 — Frontend
+
+- [ ] **FC-006 — Identidade visual da plataforma**
+  - What: definir marca (logo e nome de exibição), paleta com contraste AA, tipografia, escala de espaçamento, iconografia e os breakpoints de referência (celular, tablet, desktop); exportar tudo como design tokens consumíveis pelo tema do frontend (Tailwind + shadcn/ui, ADR-0001); validar numa tela de referência (dashboard de saldo) desenhada nos três tamanhos
+  - Where: `docs/design/visual-identity.md` e `docs/design/assets/` neste repo; tokens replicados no tema do `finances-control-frontend` quando o repo existir
+  - Done when: documento aprovado, tokens versionados e a tela de referência prototipada nos três breakpoints com experiência agradável em cada um ([requisitos §4](business-requirements.md#4-requisitos-não-funcionais))
+  - Why: o frontend nasce mobile-first e o tema do shadcn/ui é alimentado por tokens — sem identidade definida, as primeiras telas nascem com valores padrão e viram retrabalho. Pode correr em paralelo à Fase 2

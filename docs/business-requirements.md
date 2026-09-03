@@ -71,3 +71,10 @@
 ## 3. Modelo de dados inicial
 
 Diagrama em [assets/billing-control-database-schema.jpg](assets/billing-control-database-schema.jpg). Entidades: `User`, `UserProfile`, `Expenses`, `ExpenseType`, `EntryStatus`, `CreditCard`, `CreditCardStatements`, `Bank`, `BankAccount`, `BankAccountTypes`, `Earning`, `EarningType`.
+
+## 4. Requisitos não funcionais
+
+### Responsividade
+
+- A interface deve ser **responsiva**: experiência agradável — não apenas funcional — no browser do computador, do celular e do tablet.
+- Layouts, navegação e tabelas de lançamentos precisam se adaptar a cada tamanho de tela. A identidade visual (FC-006) define os breakpoints de referência; o frontend adota abordagem mobile-first ([ADR-0001](adr/ADR-0001-frontend.md)).

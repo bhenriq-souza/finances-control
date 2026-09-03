@@ -5,7 +5,7 @@ Formato: Context · Decision · Consequences · Alternatives considered. ADRs ac
 | ADR | Título | Status |
 |---|---|---|
 | [ADR-0000](ADR-0000-hosting.md) | Hospedagem no cluster K3s homelab | accepted |
-| [ADR-0001](ADR-0001-frontend.md) | Stack do front-end | **open** |
+| [ADR-0001](ADR-0001-frontend.md) | Stack do front-end | accepted |
 | [ADR-0002](ADR-0002-backend.md) | Stack e repositório do back-end | accepted |
 | [ADR-0003](ADR-0003-architecture-style.md) | Estilo arquitetural: monolito modular | accepted |
 | [ADR-0004](ADR-0004-database.md) | Banco de dados: PostgreSQL + TypeORM | accepted |
