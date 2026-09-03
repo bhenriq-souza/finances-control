@@ -31,7 +31,7 @@ Diferenças em relação ao previsto: a credencial de escrita no GitOps virou um
 
 ## Fase 2 — Domínio por fatias verticais
 
-Cada fatia nasce como spec formal (AC/INV/ERR) e vira tarefas no backlog. Ordem por dependência:
+Cada fatia nasce como spec formal (AC/INV/ERR) e vira tarefas no backlog. A [análise da planilha legada](legacy-spreadsheet-analysis.md) é insumo desta fase: fornece dinâmicas já validadas em uso, critérios de aceite derivados de falhas reais e dados de seed. Ordem por dependência:
 
 1. F001 — Usuários e autenticação (FCB-007)
 2. F002 — Bancos, contas e cartões (FCB-008)
