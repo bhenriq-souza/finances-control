@@ -11,3 +11,4 @@ Formato: Context · Decision · Consequences · Alternatives considered. ADRs ac
 | [ADR-0004](ADR-0004-database.md) | Banco de dados: PostgreSQL + TypeORM | accepted |
 | [ADR-0005](ADR-0005-queue.md) | Eventos de domínio e trabalho assíncrono | accepted |
 | [ADR-0006](ADR-0006-auth.md) | Autenticação: Firebase Auth | accepted |
+| [ADR-0007](ADR-0007-monetary-representation.md) | Representação monetária | accepted |

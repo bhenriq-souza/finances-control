@@ -9,11 +9,7 @@ Quando o kit agentic estiver instalado no backend (FCB-001), as tarefas de códi
 - [x] **FC-001 — Decidir ADR-0001 (frontend)** — feito: React 19 + Vite, SPA pura; TanStack Router/Query, react-hook-form + zod, cliente gerado do OpenAPI, Tailwind + shadcn/ui; imagem estática nginx com config em runtime; mesma origem do backend via `/api`
 - [x] **FC-002 — Decidir ADR-0003 (estilo arquitetural) e ADR-0005 (queue)** — feito: monolito modular com fronteiras verificadas por gate; eventos de domínio in-process, `pg-boss` para trabalho assíncrono, broker dedicado adiado com gatilhos explícitos
 - [x] **FC-003 — Aprovar ADR-0006 (auth)** — feito: Firebase Auth mantido, no projeto já existente; backend valida o ID token e lê o papel do banco a cada requisição; usuário novo nasce sem perfil; primeiro Admin por email de bootstrap em secret
-- [ ] **FC-005 — Decidir ADR-0007 (representação monetária)**
-  - What: registrar tipo de coluna no PostgreSQL, tipo na aplicação e política de arredondamento para valores monetários
-  - Where: `docs/adr/ADR-0007-monetary-representation.md`
-  - Done when: ADR com status `accepted` e alternativas registradas
-  - Why: nenhum documento do projeto decide isso hoje; a planilha legada acumula resíduo de ponto flutuante em saldo (ver [análise](legacy-spreadsheet-analysis.md#37-falta-decidir-a-representação-monetária))
+- [x] **FC-005 — Decidir ADR-0007 (representação monetária)** — feito: `numeric(14,2)` no banco, inteiro de centavos na aplicação e na API, resto do rateio na primeira parcela, half-up simétrico, BRL implícito, parser dedicado para `1.234,56`, formatação só na exibição
 - [x] **FC-004 — Criar board Projects v2** — feito: [Finances Control](https://github.com/users/bhenriq-souza/projects/2), 17 issues em Todo
 - [x] **FCB-001 — Seed do kit agentic-driven no backend**
   - What: `AGENTS.md`, `CLAUDE.md` stub, `specs/0000-spec-process.md`, `specs/00xx-development-workflow.md`, skills `.claude/skills/{new-spec,implement-task,check,finish-task}`, `docs/backlog.md`, PR template, CODEOWNERS; branch protection com ativação faseada do required check
