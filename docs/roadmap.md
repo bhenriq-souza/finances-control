@@ -2,7 +2,7 @@
 
 Fases com Definition of Done. O trabalho detalhado vive no [backlog](backlog.md) e é espelhado no board do GitHub.
 
-## Fase 0 — Fundações (em andamento)
+## Fase 0 — Fundações (concluída)
 
 Repos, método e decisões de base.
 
@@ -15,7 +15,7 @@ Repos, método e decisões de base.
 - [x] ADR-0001 (frontend) decidido — FC-001
 - [x] ADR-0003 (estilo arquitetural) e ADR-0005 (queue) decididos — FC-002
 - [x] ADR-0006 (auth) aprovado — FC-003
-- [ ] ADR-0007 (representação monetária) decidido — FC-005
+- [x] ADR-0007 (representação monetária) decidido — FC-005
 
 ## Fase 1 — Walking skeleton
 
