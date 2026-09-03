@@ -14,7 +14,7 @@ Repos, método e decisões de base.
 - [x] Kit agentic-driven instalado no backend (`AGENTS.md`, spec-process, workflow git, skills, PR template) — FCB-001
 - [x] ADR-0001 (frontend) decidido — FC-001
 - [x] ADR-0003 (estilo arquitetural) e ADR-0005 (queue) decididos — FC-002
-- [ ] ADR-0006 (auth) aprovado — FC-003
+- [x] ADR-0006 (auth) aprovado — FC-003
 - [ ] ADR-0007 (representação monetária) decidido — FC-005
 
 ## Fase 1 — Walking skeleton
@@ -53,6 +53,7 @@ Stack decidida no [ADR-0001](adr/ADR-0001-frontend.md): React 19 + Vite, SPA pur
 **Done when:**
 - [ ] Identidade visual e design tokens definidos — FC-006 (pode correr em paralelo à Fase 2)
 - [ ] Repo `finances-control-frontend` criado com o kit agentic-driven, scaffold do ADR-0001 e pipeline validado (tarefas `FCF-*`, a abrir quando o repo existir)
+- [ ] Spike: login Google (Firebase) validado numa origem HTTP fora de `localhost`, antes da spec de login — risco registrado no [ADR-0006](adr/ADR-0006-auth.md)
 - [ ] Backend publicado sob `/api` e frontend em `/`, no mesmo host
 - [ ] Telas de F001–F005 e relatórios consumindo a API pelo cliente gerado do OpenAPI, responsivas nos três breakpoints
 

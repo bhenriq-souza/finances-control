@@ -8,10 +8,7 @@ Quando o kit agentic estiver instalado no backend (FCB-001), as tarefas de códi
 
 - [x] **FC-001 — Decidir ADR-0001 (frontend)** — feito: React 19 + Vite, SPA pura; TanStack Router/Query, react-hook-form + zod, cliente gerado do OpenAPI, Tailwind + shadcn/ui; imagem estática nginx com config em runtime; mesma origem do backend via `/api`
 - [x] **FC-002 — Decidir ADR-0003 (estilo arquitetural) e ADR-0005 (queue)** — feito: monolito modular com fronteiras verificadas por gate; eventos de domínio in-process, `pg-boss` para trabalho assíncrono, broker dedicado adiado com gatilhos explícitos
-- [ ] **FC-003 — Aprovar ADR-0006 (auth)**
-  - What: revisar proposta Firebase Auth e aprovar ou substituir
-  - Where: `docs/adr/ADR-0006-auth.md`
-  - Done when: status `accepted` (ou novo ADR superseding)
+- [x] **FC-003 — Aprovar ADR-0006 (auth)** — feito: Firebase Auth mantido, no projeto já existente; backend valida o ID token e lê o papel do banco a cada requisição; usuário novo nasce sem perfil; primeiro Admin por email de bootstrap em secret
 - [ ] **FC-005 — Decidir ADR-0007 (representação monetária)**
   - What: registrar tipo de coluna no PostgreSQL, tipo na aplicação e política de arredondamento para valores monetários
   - Where: `docs/adr/ADR-0007-monetary-representation.md`
