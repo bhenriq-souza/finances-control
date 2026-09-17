@@ -43,6 +43,12 @@ Quando o kit agentic estiver instalado no backend (FCB-001), as tarefas de códi
 
 ## Fase 3 — Frontend
 
+- [ ] **FC-008 — Configurar o projeto Firebase para o login do F001** — [#16](https://github.com/bhenriq-souza/finances-control/issues/16)
+    - What: no projeto `financial-control-472211`, habilitar o provedor **Google** (hoje só existe email/senha) e acrescentar `finances.dev.homelab.local` aos domínios autorizados (hoje só `localhost` e os dois domínios `.firebaseapp.com`/`.web.app` do próprio projeto)
+    - Where: console do Firebase — Authentication → Sign-in method e → Settings → Authorized domains. Não há infraestrutura como código para isto
+    - Done when: o provedor Google aparece habilitado e o domínio está autorizado, verificáveis pela API de administração do Identity Platform (`/admin/v2/projects/.../config` e `.../defaultSupportedIdpConfigs`)
+    - Why: não bloqueia o backend — a verificação de ID token independe do provedor, e a spec 0010 não depende disto. Bloqueia o F001 quando o frontend chegar, e é pré-requisito do spike de risco do [ADR-0006](adr/ADR-0006-auth.md) que a Fase 3 do [roadmap](roadmap.md#fase-3--frontend) já registra. Descoberto ao identificar o projeto Firebase durante a spec 0010
+
 - [ ] **FC-006 — Identidade visual da plataforma**
   - What: definir marca (logo e nome de exibição), paleta com contraste AA, tipografia, escala de espaçamento, iconografia e os breakpoints de referência (celular, tablet, desktop); exportar tudo como design tokens consumíveis pelo tema do frontend (Tailwind + shadcn/ui, ADR-0001); validar numa tela de referência (dashboard de saldo) desenhada nos três tamanhos
   - Where: `docs/design/visual-identity.md` e `docs/design/assets/` neste repo; tokens replicados no tema do `finances-control-frontend` quando o repo existir
