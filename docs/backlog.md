@@ -22,7 +22,7 @@ Quando o kit agentic estiver instalado no backend (FCB-001), as tarefas de códi
 - [x] **FCB-003 — Registrar repo no WIF do GCP** (tfvars `github_allowed_repositories` no `homelab-infra` + `terraform apply`; secrets `GCP_WIF_PROVIDER`, `GCP_SERVICE_ACCOUNT`, `GITOPS_DEPLOY_KEY` no repo — deploy key em vez de PAT, por escopo menor e sem expiração)
 - [x] **FCB-004 — CI/CD: caller workflow** (Dockerfile + caller do reusable `docker-build-push.yaml`; push em `develop` publica imagem `sha-*` no Artifact Registry)
 - [x] **FCB-005 — Manifests no homelab-gitops** (deployment com label `homelab.io/database-access: postgresql`, service, ingress `ingressClassName: traefik` em `finances.dev.homelab.local`, ExternalSecret; registrar no kustomization de dev)
-- [ ] **FCB-006 — Database dedicado + migrations** (criar DB `finances_dev` no Postgres do cluster, secret de conexão no GCP Secret Manager, TypeORM migrations rodando no deploy)
+- [x] **FCB-006 — Database dedicado + migrations** — feito: spec 0003 e ADR local 0001 no backend; DB `finances_dev` e role `finances_app` dedicados, secrets `homelab-dev-finances-database-*` no GCP Secret Manager entregues por ExternalSecret, migrations num initContainer, `/health/ready` sondando o banco
 
 ## Fase 2 — Domínio (specs formais no backend)
 
