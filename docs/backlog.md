@@ -26,20 +26,22 @@ Quando o kit agentic estiver instalado no backend (FCB-001), as tarefas de códi
 
 ## Fase 2 — Domínio (specs formais no backend)
 
-- [ ] **FCB-007 — Spec + implementação F001**: usuários e autenticação (Firebase/Google, RBAC Admin/Biller/Viewer)
-- [ ] **FCB-008 — Spec + implementação F002**: bancos, contas bancárias e cartões de crédito
-- [ ] **FCB-009 — Spec + implementação F003**: despesas (fixas/variáveis/parceladas, status, reflexo em saldo/limite)
-- [ ] **FCB-010 — Spec + implementação F004**: faturas de cartão de crédito
-- [ ] **FCB-011 — Spec + implementação F005**: receitas
-- [ ] **FCB-012 — Saldo previsto e relatórios**
-- [ ] **FCB-014 — Dispatcher de eventos de domínio in-process** (interface na camada `platform`, dispatch pós-commit, preparada para outbox — ADR-0005; precede FCB-009)
+Concluída em 2026-10-09: primeira versão do backend no ar em dev ([roadmap, Fase 2](roadmap.md#fase-2--domínio-por-fatias-verticais-concluída)). A FCB-013 ficou fora da versão.
+
+- [x] **FCB-007 — Spec + implementação F001**: usuários e autenticação (Firebase/Google, RBAC Admin/Biller/Viewer)
+- [x] **FCB-008 — Spec + implementação F002**: bancos, contas bancárias e cartões de crédito
+- [x] **FCB-009 — Spec + implementação F003**: despesas (fixas/variáveis/parceladas, status, reflexo em saldo/limite)
+- [x] **FCB-010 — Spec + implementação F004**: faturas de cartão de crédito
+- [x] **FCB-011 — Spec + implementação F005**: receitas
+- [x] **FCB-012 — Saldo previsto e relatórios**
+- [x] **FCB-014 — Dispatcher de eventos de domínio in-process** (interface na camada `platform`, dispatch pós-commit, preparada para outbox — ADR-0005; precede FCB-009)
 - [ ] **FCB-013 — Importação CSV** (bancos/contas/cartões, despesas, receitas) — **fora da primeira versão** do backend, por decisão do responsável em 2026-10-09
-- [ ] **FCB-015 — Jobs assíncronos e agendados com `pg-boss`** (worker de importação, Aberto→Vencido, fechamento de fatura, recorrência mensal — ADR-0005)
+- [x] **FCB-015 — Jobs assíncronos e agendados com `pg-boss`** (worker de importação, Aberto→Vencido, fechamento de fatura, recorrência mensal — ADR-0005)
 - [ ] **FC-007 — Piloto de Agent Teams na revisão da spec 0012 (expenses)** — [#13](https://github.com/bhenriq-souza/finances-control/issues/13)
   - What: antes de aprovar a spec `0012`, revisá-la com um time de três teammates que debatem entre si — domínio vs. planilha legada; ADR-0003/0005/0007 e invariantes financeiras; testabilidade dos ACs — com o lead consolidando. Preparação: flag experimental habilitada, um `git worktree` por teammate validado, hook `TaskCompleted` rodando `npm run check`, seção de teammates no `AGENTS.md` do backend
   - Where: sessão no `finances-control-backend`; achados no PR da spec `0012`; regra de teammates em `AGENTS.md` (PR próprio, após o piloto)
   - Done when: revisão concluída com registro dos achados que uma revisão única não traria, do custo em tokens comparado a uma revisão simples, e decisão go/no-go para o primeiro time de implementação (expenses, earnings e dispatcher em paralelo, um teammate por módulo)
-  - Why: Agent Teams custa linearmente por teammate e não herda contexto; compensa só com specs aprovadas em módulos disjuntos e agenda para revisar PRs em paralelo. O piloto em revisão tem custo único e nenhuma coordenação de código ([roadmap, Fase 2](roadmap.md#fase-2--domínio-por-fatias-verticais))
+  - Why: Agent Teams custa linearmente por teammate e não herda contexto; compensa só com specs aprovadas em módulos disjuntos e agenda para revisar PRs em paralelo. O piloto em revisão tem custo único e nenhuma coordenação de código ([roadmap, Fase 2](roadmap.md#fase-2--domínio-por-fatias-verticais-concluída))
 
 ## Fase 3 — Frontend
 
