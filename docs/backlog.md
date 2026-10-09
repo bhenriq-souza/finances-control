@@ -33,7 +33,7 @@ Quando o kit agentic estiver instalado no backend (FCB-001), as tarefas de códi
 - [ ] **FCB-011 — Spec + implementação F005**: receitas
 - [ ] **FCB-012 — Saldo previsto e relatórios**
 - [ ] **FCB-014 — Dispatcher de eventos de domínio in-process** (interface na camada `platform`, dispatch pós-commit, preparada para outbox — ADR-0005; precede FCB-009)
-- [ ] **FCB-013 — Importação CSV** (bancos/contas/cartões, despesas, receitas)
+- [ ] **FCB-013 — Importação CSV** (bancos/contas/cartões, despesas, receitas) — **fora da primeira versão** do backend, por decisão do responsável em 2026-10-09
 - [ ] **FCB-015 — Jobs assíncronos e agendados com `pg-boss`** (worker de importação, Aberto→Vencido, fechamento de fatura, recorrência mensal — ADR-0005)
 - [ ] **FC-007 — Piloto de Agent Teams na revisão da spec 0012 (expenses)** — [#13](https://github.com/bhenriq-souza/finances-control/issues/13)
   - What: antes de aprovar a spec `0012`, revisá-la com um time de três teammates que debatem entre si — domínio vs. planilha legada; ADR-0003/0005/0007 e invariantes financeiras; testabilidade dos ACs — com o lead consolidando. Preparação: flag experimental habilitada, um `git worktree` por teammate validado, hook `TaskCompleted` rodando `npm run check`, seção de teammates no `AGENTS.md` do backend

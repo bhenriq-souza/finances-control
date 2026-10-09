@@ -58,7 +58,7 @@ Cada fatia nasce como spec formal (AC/INV/ERR) e vira tarefas no backlog. A [an�
 4. F004 — Faturas de cartão (FCB-010)
 5. F005 — Receitas (FCB-011)
 6. Saldo previsto e relatórios (FCB-012)
-7. Importação CSV (FCB-013)
+7. ~~Importação CSV (FCB-013)~~ — **fora da primeira versão**, por decisão do responsável em 2026-10-09
 
 **Modo de trabalho (decidido em 2026-09-03):** desenvolvimento em sessão única com subagentes até a spec `0012` (expenses). A revisão dessa spec é o **piloto de Agent Teams** (FC-007): três revisores que debatem entre si, custo único, sem coordenação de código. O primeiro time de implementação só nasce quando duas ou mais specs estiverem aprovadas ao mesmo tempo em módulos disjuntos — candidatos: expenses (FCB-009), earnings (FCB-011) e dispatcher (FCB-014) — e houver agenda para revisar PRs em paralelo. Um teammate por módulo, em worktree e branch próprios; `backlog.md`, `openapi.yaml`, migrations e `platform` ficam com o lead. Times não economizam tokens (custo linear por teammate): compram tempo de calendário e verificação cruzada.
 
