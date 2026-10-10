@@ -1,6 +1,6 @@
 # ADR-0001 — Stack do front-end
 
-- Status: **accepted**
+- Status: **accepted** — a publicação sob `/api` foi detalhada e alterada pelo [ADR-0008](ADR-0008-api-path-prefix.md)
 - Data: 2026-09-03
 
 ## Context
