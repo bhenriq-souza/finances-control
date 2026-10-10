@@ -13,4 +13,4 @@ Formato: Context · Decision · Consequences · Alternatives considered. ADRs ac
 | [ADR-0006](ADR-0006-auth.md) | Autenticação: Firebase Auth | accepted (projeto Firebase: ADR-0009) |
 | [ADR-0007](ADR-0007-monetary-representation.md) | Representação monetária | accepted |
 | [ADR-0008](ADR-0008-api-path-prefix.md) | Publicação da API sob `/api` por `stripPrefix` no ingress | accepted |
-| [ADR-0009](ADR-0009-firebase-project.md) | Projeto Firebase `homelab-492918` e email verificado | accepted |
+| [ADR-0009](ADR-0009-firebase-project.md) | Projeto Firebase `dev-financial-control` e email verificado | accepted |

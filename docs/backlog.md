@@ -42,20 +42,15 @@ Concluída em 2026-10-09: primeira versão do backend no ar em dev ([roadmap, Fa
 ## Fase 3 — Frontend
 
 - [ ] **FCB-020 — Plataforma HTTP para o frontend** (backend, spec `0005`): erros de protocolo em JSON, códigos de erro enumerados no contrato, `401`/`403` declarados e a publicação sob `/api` por `stripPrefix` ([ADR-0008](adr/ADR-0008-api-path-prefix.md))
-- [ ] **FCB-007, revisão de 2026-10-10** (backend, spec `0010`): email verificado no bootstrap, re-vínculo por email verificado e troca do projeto Firebase para `homelab-492918` ([ADR-0009](adr/ADR-0009-firebase-project.md))
+- [ ] **FCB-007, revisão de 2026-10-10** (backend, spec `0010`): email verificado no bootstrap, re-vínculo por email verificado e troca do projeto Firebase para `dev-financial-control` ([ADR-0009](adr/ADR-0009-firebase-project.md))
 
-- [ ] **FC-008 — Configurar o projeto Firebase para o login do F001** — [#16](https://github.com/bhenriq-souza/finances-control/issues/16)
-    - What: no projeto `homelab-492918` ([ADR-0009](adr/ADR-0009-firebase-project.md)), onde o Firebase já foi ativado em 2026-10-10:
-        1. habilitar os provedores **email/senha** e **Google**;
-        2. acrescentar `finances.dev.homelab.local` aos domínios autorizados;
-        3. registrar um app **Web**, cuja web config o frontend recebe em runtime;
-        4. gerar uma chave da service account do `firebase-admin` e gravá-la como nova versão do secret `homelab-dev-finances-firebase-service-account`.
-    - Where: console do Firebase (Authentication → Sign-in method e Settings → Authorized domains; Configurações do projeto → Seus apps e Contas de serviço) e GCP Secret Manager. Não há infraestrutura como código para isto
-    - Done when:
-        - os provedores aparecem habilitados e o domínio está autorizado, verificáveis pela API de administração do Identity Platform (`/admin/v2/projects/homelab-492918/config` e `.../defaultSupportedIdpConfigs`);
-        - a web config está registrada;
-        - o secret tem a versão nova, que a T-0010-08 do backend consome.
-    - Why: bloqueia o F001 no frontend, o spike de login do [ADR-0006](adr/ADR-0006-auth.md) e a troca de projeto no backend (T-0010-08)
+- [x] **FC-008 — Configurar o projeto Firebase para o login do F001** — [#16](https://github.com/bhenriq-souza/finances-control/issues/16) — **concluída em 2026-10-10**, no projeto próprio `dev-financial-control` ([ADR-0009](adr/ADR-0009-firebase-project.md)).
+    - Verificado pela API de administração do Identity Platform:
+        - provedores email/senha e Google habilitados;
+        - domínios autorizados `localhost`, os dois do projeto e `finances.dev.homelab.local`;
+        - app Web `finances-frontend` registrado.
+    - A chave da service account do `firebase-admin` virou a versão 2 do secret
+      `homelab-dev-finances-firebase-service-account`. O backend passa a usá-la na T-0010-08.
 
 - [ ] **FC-006 — Identidade visual da plataforma** — [#8](https://github.com/bhenriq-souza/finances-control/issues/8)
   - What: definir a identidade com os tipos de Artifact do Claude.
