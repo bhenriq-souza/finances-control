@@ -48,7 +48,7 @@ do backend, que fixa também as convenções de schema que valem para todas as s
 em `snake_case`, chave primária `uuid`, `timestamptz` em UTC e dinheiro em `numeric(14,2)`
 convertido para inteiro de centavos na fronteira do ORM.
 
-## Fase 2 — Domínio por fatias verticais
+## Fase 2 — Domínio por fatias verticais (concluída)
 
 Cada fatia nasce como spec formal (AC/INV/ERR) e vira tarefas no backlog. A [análise da planilha legada](legacy-spreadsheet-analysis.md) é insumo desta fase: fornece dinâmicas já validadas em uso, critérios de aceite derivados de falhas reais e dados de seed. Ordem por dependência:
 
@@ -64,7 +64,43 @@ Cada fatia nasce como spec formal (AC/INV/ERR) e vira tarefas no backlog. A [an�
 
 **Execução paralela com subagentes (experimento de 2026-10-06):** com as specs `0004` e `0012`–`0018` aprovadas, o backend rodou duas rodadas de subagentes em worktrees próprios: 2 tarefas (T-0004-01, T-0012-03) e depois 3 (T-0004-02, T-0012-01, T-0014-01). Todas saíram com `npm run check` verde na primeira tentativa, nenhuma parou com dúvida de spec, e cada subagente gastou entre ~50 mil e ~75 mil tokens. A regra acima de deixar migrations e `platform` com o lead foi relaxada: cada tarefa cria a sua própria migration, e arquivos compartilhados são aceitos quando a mudança é só acréscimo, com o lead resolvendo os conflitos no rebase. O limite real não foi custo, e sim o grafo de dependências do backlog, o `npm run check` serial num banco de teste único e a revisão humana. Regras, briefing e medições no [playbook do backend](https://github.com/bhenriq-souza/finances-control-backend/blob/develop/docs/parallel-execution.md).
 
-**Done when:** todas as specs `implemented`, endpoints cobertos por testes, API documentada via OpenAPI.
+**Done when:**
+- [x] Todas as specs `implemented` — `0010` a `0015`, `0017` e `0018`
+- [x] Endpoints cobertos por testes — `npm run check` verde nos 7 gates, 107 suítes e 1214 testes
+- [x] API documentada via OpenAPI — 75 operações, conferidas contra as rotas do código por teste
+
+**Fase encerrada em 2026-10-09: a primeira versão do backend está pronta e no ar em dev.** O
+`develop` em `841ce1e` roda no `dev-apps` como `sha-841ce1e`, com `GET /health/ready` respondendo 200
+com `database: up` e `jobs: up`. O responsável validou o acesso pelo Postman em
+`finances.dev.homelab.local`.
+
+O que a versão entrega, por spec do backend:
+
+| Spec   | Entrega                                                                                       | Issue             |
+| ------ | --------------------------------------------------------------------------------------------- | ----------------- |
+| `0010` | Usuários, autenticação pelo ID token do Firebase e perfis `ADMIN`/`BILLER`/`VIEWER`           | FCB-007           |
+| `0011` | Bancos, contas bancárias e cartões de crédito, com conta pagadora do cartão                   | FCB-008           |
+| `0012` | Despesas fixas, variáveis e parceladas, tipos de despesa e status, com reflexo em saldo/limite | FCB-009           |
+| `0013` | Faturas de cartão: fechamento, estornos e pagamento, inclusive antecipado                     | FCB-010           |
+| `0014` | Receitas, tipos de receita e status                                                           | FCB-011           |
+| `0015` | Saldo realizado, saldo previsto com dívida dos cartões, relatórios por tipo e fluxo de caixa  | FCB-012           |
+| `0017` | `pg-boss`, rotinas diárias e séries de lançamentos fixos (despesas e receitas)                | FCB-014, FCB-015  |
+| `0018` | Transferências entre contas próprias, concluídas e agendadas, refletidas nos relatórios       | FCB-018           |
+
+Para testar à mão, o backend versiona uma collection do Postman gerada do contrato, com ambientes
+local e dev e obtenção automática do ID token
+([`docs/postman/`](https://github.com/bhenriq-souza/finances-control-backend/tree/develop/docs/postman)).
+`*.dev.homelab.local` não está em DNS nenhum: cada cliente aponta o nome para o Traefik
+(`192.168.15.97`) no arquivo de hosts ou no roteador.
+
+Ficaram fora da versão: a importação CSV (FCB-013), por decisão do responsável, e qualquer ambiente
+de produção, que é a [Fase 4](#fase-4--promoção-a-prd).
+
+Diferenças em relação ao previsto: as transferências entre contas (spec `0018`) e os jobs com
+`pg-boss` (spec `0017`) não estavam na lista inicial e entraram por necessidade do domínio — sem
+transferência, o saldo realizado não fecha com o saldo corrente das contas; sem jobs, não há
+fechamento de fatura nem série de lançamentos fixos. O schema `pgboss` é migrado num initContainer,
+como as migrations TypeORM, e a aplicação nunca o migra no boot.
 
 ## Fase 3 — Frontend
 
