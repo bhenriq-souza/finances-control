@@ -90,8 +90,10 @@ O que a versão entrega, por spec do backend:
 Para testar à mão, o backend versiona uma collection do Postman gerada do contrato, com ambientes
 local e dev e obtenção automática do ID token
 ([`docs/postman/`](https://github.com/bhenriq-souza/finances-control-backend/tree/develop/docs/postman)).
-`*.dev.homelab.local` não está em DNS nenhum: cada cliente aponta o nome para o Traefik
-(`192.168.15.97`) no arquivo de hosts ou no roteador.
+Desde 2026-10-09, um CoreDNS do cluster (`homelab-gitops`, PRs #8 e #9) responde
+`*.homelab.local → 192.168.15.97` em `192.168.15.97:53`. Ele é autoritativo só para essa zona e não é
+recursivo, então cada cliente encaminha `homelab.local` para ele. Isso funciona em computador, mas
+celular e tablet precisam do encaminhamento no roteador (Fase 3).
 
 Ficaram fora da versão: a importação CSV (FCB-013), por decisão do responsável, e qualquer ambiente
 de produção, que é a [Fase 4](#fase-4--promoção-a-prd).
@@ -104,10 +106,22 @@ como as migrations TypeORM, e a aplicação nunca o migra no boot.
 
 ## Fase 3 — Frontend
 
-Stack decidida no [ADR-0001](adr/ADR-0001-frontend.md): React 19 + Vite, SPA pura servida como imagem estática, mesma origem do backend via `/api`. Repo próprio `finances-control-frontend`, mesmo pipeline (app-name `finances-frontend` no GitOps). Requisito transversal: experiência agradável em desktop, celular e tablet ([requisitos §4](business-requirements.md#4-requisitos-não-funcionais)). Fase de maior retorno esperado para Agent Teams — as telas de F001–F005 são rotas e arquivos disjuntos, e o contrato OpenAPI permite frontend e backend em paralelo — condicionada ao go do piloto FC-007.
+Stack decidida no [ADR-0001](adr/ADR-0001-frontend.md): React 19 + Vite, SPA pura servida como imagem estática, mesma origem do backend via `/api`. Repo próprio `finances-control-frontend`, mesmo pipeline (app-name `finances-frontend` no GitOps). Requisito transversal: experiência agradável em desktop, celular e tablet ([requisitos §4](business-requirements.md#4-requisitos-não-funcionais)), no navegador, sem PWA na primeira versão.
+
+**Decisões do levantamento de 2026-10-10:**
+- `/api` por `stripPrefix` no ingress, com as rotas do backend na raiz ([ADR-0008](adr/ADR-0008-api-path-prefix.md)).
+- Firebase no projeto `homelab-492918`, com email verificado no bootstrap ([ADR-0009](adr/ADR-0009-firebase-project.md)).
+- Contrato OpenAPI baixado do backend no build do frontend, fixado numa tag ou num commit.
+- UI só em pt-BR, com as mensagens de erro traduzidas pelo `code` da API.
+- Login por email/senha e Google; `PROFILE_PENDING` leva a uma tela de aguardando aprovação.
+- **Gates:** os sete do backend, mais `contract`, `build`, `e2e` (Playwright nos três viewports) e um gate de análise de vulnerabilidade de código.
+- **Tema escuro:** decidido antes do Design System.
+- **Execução:** subagentes em worktrees, como na Fase 2. O piloto de Agent Teams (FC-007) foi encerrado sem execução.
 
 **Done when:**
-- [ ] Identidade visual e design tokens definidos — FC-006 (pode correr em paralelo à Fase 2)
+- [ ] Backend pronto para o frontend: erros em JSON, contrato de erros, publicação sob `/api` (FCB-020) e email verificado com a troca de projeto do Firebase (revisão da FCB-007)
+- [ ] Projeto Firebase configurado para o login (FC-008)
+- [ ] Identidade visual e design tokens definidos — FC-006, pelo Design System e pelo Design do Claude
 - [ ] Repo `finances-control-frontend` criado com o kit agentic-driven, scaffold do ADR-0001 e pipeline validado (tarefas `FCF-*`, a abrir quando o repo existir)
 - [ ] Spike: login Google (Firebase) validado numa origem HTTP fora de `localhost`, antes da spec de login — risco registrado no [ADR-0006](adr/ADR-0006-auth.md)
 - [ ] Backend publicado sob `/api` e frontend em `/`, no mesmo host

@@ -37,22 +37,46 @@ Concluída em 2026-10-09: primeira versão do backend no ar em dev ([roadmap, Fa
 - [x] **FCB-014 — Dispatcher de eventos de domínio in-process** (interface na camada `platform`, dispatch pós-commit, preparada para outbox — ADR-0005; precede FCB-009)
 - [ ] **FCB-013 — Importação CSV** (bancos/contas/cartões, despesas, receitas) — **fora da primeira versão** do backend, por decisão do responsável em 2026-10-09
 - [x] **FCB-015 — Jobs assíncronos e agendados com `pg-boss`** (worker de importação, Aberto→Vencido, fechamento de fatura, recorrência mensal — ADR-0005)
-- [ ] **FC-007 — Piloto de Agent Teams na revisão da spec 0012 (expenses)** — [#13](https://github.com/bhenriq-souza/finances-control/issues/13)
-  - What: antes de aprovar a spec `0012`, revisá-la com um time de três teammates que debatem entre si — domínio vs. planilha legada; ADR-0003/0005/0007 e invariantes financeiras; testabilidade dos ACs — com o lead consolidando. Preparação: flag experimental habilitada, um `git worktree` por teammate validado, hook `TaskCompleted` rodando `npm run check`, seção de teammates no `AGENTS.md` do backend
-  - Where: sessão no `finances-control-backend`; achados no PR da spec `0012`; regra de teammates em `AGENTS.md` (PR próprio, após o piloto)
-  - Done when: revisão concluída com registro dos achados que uma revisão única não traria, do custo em tokens comparado a uma revisão simples, e decisão go/no-go para o primeiro time de implementação (expenses, earnings e dispatcher em paralelo, um teammate por módulo)
-  - Why: Agent Teams custa linearmente por teammate e não herda contexto; compensa só com specs aprovadas em módulos disjuntos e agenda para revisar PRs em paralelo. O piloto em revisão tem custo único e nenhuma coordenação de código ([roadmap, Fase 2](roadmap.md#fase-2--domínio-por-fatias-verticais-concluída))
+- [x] **FC-007 — Piloto de Agent Teams na revisão da spec 0012 (expenses)** — [#13](https://github.com/bhenriq-souza/finances-control/issues/13) — **encerrada sem execução** em 2026-10-10: a spec `0012` foi aprovada e implementada antes do piloto, e o playbook de subagentes em worktrees ([backend](https://github.com/bhenriq-souza/finances-control-backend/blob/develop/docs/parallel-execution.md)) rodou 14 rodadas com bom resultado. A Fase 3 segue com subagentes, sem condição de go/no-go
 
 ## Fase 3 — Frontend
 
-- [ ] **FC-008 — Configurar o projeto Firebase para o login do F001** — [#16](https://github.com/bhenriq-souza/finances-control/issues/16)
-    - What: no projeto `financial-control-472211`, habilitar o provedor **Google** (hoje só existe email/senha) e acrescentar `finances.dev.homelab.local` aos domínios autorizados (hoje só `localhost` e os dois domínios `.firebaseapp.com`/`.web.app` do próprio projeto)
-    - Where: console do Firebase — Authentication → Sign-in method e → Settings → Authorized domains. Não há infraestrutura como código para isto
-    - Done when: o provedor Google aparece habilitado e o domínio está autorizado, verificáveis pela API de administração do Identity Platform (`/admin/v2/projects/.../config` e `.../defaultSupportedIdpConfigs`)
-    - Why: não bloqueia o backend — a verificação de ID token independe do provedor, e a spec 0010 não depende disto. Bloqueia o F001 quando o frontend chegar, e é pré-requisito do spike de risco do [ADR-0006](adr/ADR-0006-auth.md) que a Fase 3 do [roadmap](roadmap.md#fase-3--frontend) já registra. Descoberto ao identificar o projeto Firebase durante a spec 0010
+- [ ] **FCB-020 — Plataforma HTTP para o frontend** (backend, spec `0005`): erros de protocolo em JSON, códigos de erro enumerados no contrato, `401`/`403` declarados e a publicação sob `/api` por `stripPrefix` ([ADR-0008](adr/ADR-0008-api-path-prefix.md))
+- [ ] **FCB-007, revisão de 2026-10-10** (backend, spec `0010`): email verificado no bootstrap, re-vínculo por email verificado e troca do projeto Firebase para `homelab-492918` ([ADR-0009](adr/ADR-0009-firebase-project.md))
 
-- [ ] **FC-006 — Identidade visual da plataforma**
-  - What: definir marca (logo e nome de exibição), paleta com contraste AA, tipografia, escala de espaçamento, iconografia e os breakpoints de referência (celular, tablet, desktop); exportar tudo como design tokens consumíveis pelo tema do frontend (Tailwind + shadcn/ui, ADR-0001); validar numa tela de referência (dashboard de saldo) desenhada nos três tamanhos
-  - Where: `docs/design/visual-identity.md` e `docs/design/assets/` neste repo; tokens replicados no tema do `finances-control-frontend` quando o repo existir
-  - Done when: documento aprovado, tokens versionados e a tela de referência prototipada nos três breakpoints com experiência agradável em cada um ([requisitos §4](business-requirements.md#4-requisitos-não-funcionais))
-  - Why: o frontend nasce mobile-first e o tema do shadcn/ui é alimentado por tokens — sem identidade definida, as primeiras telas nascem com valores padrão e viram retrabalho. Pode correr em paralelo à Fase 2
+- [ ] **FC-008 — Configurar o projeto Firebase para o login do F001** — [#16](https://github.com/bhenriq-souza/finances-control/issues/16)
+    - What: no projeto `homelab-492918` ([ADR-0009](adr/ADR-0009-firebase-project.md)), onde o Firebase já foi ativado em 2026-10-10:
+        1. habilitar os provedores **email/senha** e **Google**;
+        2. acrescentar `finances.dev.homelab.local` aos domínios autorizados;
+        3. registrar um app **Web**, cuja web config o frontend recebe em runtime;
+        4. gerar uma chave da service account do `firebase-admin` e gravá-la como nova versão do secret `homelab-dev-finances-firebase-service-account`.
+    - Where: console do Firebase (Authentication → Sign-in method e Settings → Authorized domains; Configurações do projeto → Seus apps e Contas de serviço) e GCP Secret Manager. Não há infraestrutura como código para isto
+    - Done when:
+        - os provedores aparecem habilitados e o domínio está autorizado, verificáveis pela API de administração do Identity Platform (`/admin/v2/projects/homelab-492918/config` e `.../defaultSupportedIdpConfigs`);
+        - a web config está registrada;
+        - o secret tem a versão nova, que a T-0010-08 do backend consome.
+    - Why: bloqueia o F001 no frontend, o spike de login do [ADR-0006](adr/ADR-0006-auth.md) e a troca de projeto no backend (T-0010-08)
+
+- [ ] **FC-006 — Identidade visual da plataforma** — [#8](https://github.com/bhenriq-souza/finances-control/issues/8)
+  - What: definir a identidade com os tipos de Artifact do Claude.
+      - Primeiro um **Design System**:
+          - marca (logo e nome de exibição) e voz dos textos em pt-BR;
+          - paleta clara e escura com contraste AA, incluindo cores de saldo positivo e negativo e uma por status de lançamento;
+          - tipografia com algarismos tabulares, escala de espaçamento, radius, iconografia (lucide) e os breakpoints de celular, tablet e desktop;
+          - componentes de dinheiro, status, lista que vira cards e app shell.
+      - Depois um **Design** da tela de referência, o dashboard de saldo, nos três tamanhos, que valida o Design System.
+      - Aprovados, os tokens saem para um arquivo versionado neste repo e dele para o tema Tailwind + shadcn/ui do frontend ([ADR-0001](adr/ADR-0001-frontend.md)).
+  - Where:
+      - os artifacts Design System e Design no claude.ai;
+      - neste repo:
+          - `docs/design/visual-identity.md`, com os links e as versões dos artifacts;
+          - `docs/design/tokens.json`, em formato DTCG, que é a fonte de verdade dos tokens;
+          - `docs/design/assets/`, com o logo;
+          - `docs/design/screens/`, com os PNGs aprovados.
+      - O tema do `finances-control-frontend` é gerado do `tokens.json`.
+  - Done when:
+      - Design System aprovado;
+      - `tokens.json` versionado, com o contraste AA dos pares texto/fundo verificado por script;
+      - dashboard de saldo prototipado nos três breakpoints com experiência agradável em cada um ([requisitos §4](business-requirements.md#4-requisitos-não-funcionais));
+      - `visual-identity.md` aprovado.
+  - Why: o frontend nasce mobile-first e o tema do shadcn/ui é alimentado por tokens — sem identidade definida, as primeiras telas nascem com valores padrão e viram retrabalho. Os artifacts vivem fora do git; por isso os tokens e as telas aprovadas ficam versionados aqui, e nas specs de tela o comportamento continua mandando sobre o design
