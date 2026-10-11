@@ -57,7 +57,8 @@ Concluída em 2026-10-09: primeira versão do backend no ar em dev ([roadmap, Fa
         - o secret tem a versão nova, que a T-0010-08 do backend consome.
     - Why: bloqueia o F001 no frontend, o spike de login do [ADR-0006](adr/ADR-0006-auth.md) e a troca de projeto no backend (T-0010-08)
 
-- [ ] **FC-006 — Identidade visual da plataforma** — [#8](https://github.com/bhenriq-souza/finances-control/issues/8)
+- [x] **FC-006 — Identidade visual da plataforma** — [#8](https://github.com/bhenriq-souza/finances-control/issues/8)
+  - Concluída em 2026-10-11: o produto se chama **FTech Finance** e usa a identidade da **FarmTech**, dona dele. Design System, Design do dashboard nos três tamanhos e nos dois temas, `tokens.json`, marca e verificação de contraste em [`docs/design/`](design/visual-identity.md). Duas mudanças no previsto: o `tokens.json` fica no formato do Design System do Claude, não em DTCG, porque o Design System não lê DTCG e dois formatos divergiriam; e as telas aprovadas são os artboards do canvas, linkados em `visual-identity.md`, com `screens/` reservado para PNGs exportados.
   - What: definir a identidade com os tipos de Artifact do Claude.
       - Primeiro um **Design System**:
           - marca (logo e nome de exibição) e voz dos textos em pt-BR;
@@ -70,9 +71,9 @@ Concluída em 2026-10-09: primeira versão do backend no ar em dev ([roadmap, Fa
       - os artifacts Design System e Design no claude.ai;
       - neste repo:
           - `docs/design/visual-identity.md`, com os links e as versões dos artifacts;
-          - `docs/design/tokens.json`, em formato DTCG, que é a fonte de verdade dos tokens;
+          - `docs/design/tokens.json`, no formato do Design System do Claude, que é a fonte de verdade dos tokens;
           - `docs/design/assets/`, com o logo;
-          - `docs/design/screens/`, com os PNGs aprovados.
+          - `docs/design/screens/`, com os PNGs exportados, quando houver; os artboards aprovados ficam linkados em `visual-identity.md`.
       - O tema do `finances-control-frontend` é gerado do `tokens.json`.
   - Done when:
       - Design System aprovado;

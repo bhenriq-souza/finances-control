@@ -23,6 +23,7 @@ Este é o **repositório hub** do produto: concentra requisitos, decisões de ar
 - [Perfis de usuário](docs/user-profiles.md) — Admin, Biller, Viewer
 - [Modelo de dados](docs/assets/billing-control-database-schema.jpg) — diagrama inicial
 - [ADRs](docs/adr/README.md) — decisões de arquitetura
+- [Identidade visual](docs/design/visual-identity.md) — FTech Finance com a marca da FarmTech: Design System, tokens e telas de referência
 - [Requisitos de CI/CD](docs/cicd-requirements.md)
 - [Infraestrutura (cluster homelab)](docs/infra/cluster-status.md)
 - [Roadmap](docs/roadmap.md) — fases com Definition of Done
