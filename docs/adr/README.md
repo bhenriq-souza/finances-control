@@ -10,7 +10,8 @@ Formato: Context · Decision · Consequences · Alternatives considered. ADRs ac
 | [ADR-0003](ADR-0003-architecture-style.md) | Estilo arquitetural: monolito modular | accepted |
 | [ADR-0004](ADR-0004-database.md) | Banco de dados: PostgreSQL + TypeORM | accepted |
 | [ADR-0005](ADR-0005-queue.md) | Eventos de domínio e trabalho assíncrono | accepted |
-| [ADR-0006](ADR-0006-auth.md) | Autenticação: Firebase Auth | accepted (projeto Firebase: ADR-0009) |
+| [ADR-0006](ADR-0006-auth.md) | Autenticação: Firebase Auth | accepted (projeto Firebase: ADR-0009 e ADR-0010) |
 | [ADR-0007](ADR-0007-monetary-representation.md) | Representação monetária | accepted |
 | [ADR-0008](ADR-0008-api-path-prefix.md) | Publicação da API sob `/api` por `stripPrefix` no ingress | accepted |
-| [ADR-0009](ADR-0009-firebase-project.md) | Projeto Firebase `homelab-492918` e email verificado | accepted |
+| [ADR-0009](ADR-0009-firebase-project.md) | Projeto Firebase `homelab-492918` e email verificado | accepted (projeto: ADR-0010) |
+| [ADR-0010](ADR-0010-firebase-project-dev.md) | Projeto Firebase `dev-financial-control` | accepted |

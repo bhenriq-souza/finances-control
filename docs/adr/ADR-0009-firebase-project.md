@@ -1,6 +1,6 @@
 # ADR-0009 — Projeto Firebase `homelab-492918` e email verificado
 
-- Status: **accepted**
+- Status: **accepted** — o projeto Firebase foi substituído pelo [ADR-0010](ADR-0010-firebase-project-dev.md) (`dev-financial-control`); a condição de email verificado continua
 - Data: 2026-10-10
 - Substitui, no [ADR-0006](ADR-0006-auth.md), a decisão "Projeto Firebase reaproveitado" e a
   alternativa rejeitada "Projeto Firebase novo"

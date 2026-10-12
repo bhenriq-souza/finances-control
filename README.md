@@ -10,7 +10,7 @@ Este é o **repositório hub** do produto: concentra requisitos, decisões de ar
 |---|---|
 | [finances-control](https://github.com/bhenriq-souza/finances-control) | Hub — requisitos, ADRs, roadmap, wiki, board |
 | [finances-control-backend](https://github.com/bhenriq-souza/finances-control-backend) | API backend (Node.js + TypeScript + Express 5 + TypeORM/PostgreSQL) |
-| `finances-control-frontend` | A criar — SPA React 19 + Vite, decidida no [ADR-0001](docs/adr/ADR-0001-frontend.md) |
+| [finances-control-frontend](https://github.com/bhenriq-souza/finances-control-frontend) | SPA do FTech Finance (React 19 + Vite, [ADR-0001](docs/adr/ADR-0001-frontend.md)), com o mesmo kit agentic-driven do backend |
 | [homelab-gitops](https://github.com/bhenriq-souza/homelab-gitops) | Estado desejado dos deploys (Argo CD) no cluster K3s homelab |
 | [typescript-common-packages](https://github.com/bhenriq-souza/typescript-common-packages) | Pacotes `@bhs-dev/*` reutilizados pelo backend |
 
