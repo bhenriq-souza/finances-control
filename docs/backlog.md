@@ -91,13 +91,13 @@ Issues de entrega `FCF-*` no [`finances-control-frontend`](https://github.com/bh
 - [x] **FCF-002 — Scaffold e estrutura** — [#2](https://github.com/bhenriq-souza/finances-control-frontend/issues/2): spec `0003`; inclui a página mínima do spike de login
 - [x] **FCF-003 — Tema gerado do `tokens.json`** — [#3](https://github.com/bhenriq-souza/finances-control-frontend/issues/3): spec `0004`
 - [x] **FCF-004 — Cliente da API e erros por `code`** — [#4](https://github.com/bhenriq-souza/finances-control-frontend/issues/4): spec `0005`, contrato fixado na tag `v1.1.0` do backend
-- [ ] **FCF-005 — Autenticação, app shell e spike do login Google** — [#5](https://github.com/bhenriq-souza/finances-control-frontend/issues/5): spec `0006`; o spike é a primeira tarefa depois das specs de fundação
+- [x] **FCF-005 — Autenticação, app shell e spike do login Google** — [#5](https://github.com/bhenriq-souza/finances-control-frontend/issues/5): spec `0006`; o spike é a primeira tarefa depois das specs de fundação
 - [x] **FCF-006 — Publicação do frontend em `dev`** — [#6](https://github.com/bhenriq-souza/finances-control-frontend/issues/6): spec `0007`; imagem nginx, `config.js` por ConfigMap, WIF, manifests e a troca do ingress `/`
 - [x] **FCF-007 — Dinheiro no cliente (BRL)** — [#7](https://github.com/bhenriq-souza/finances-control-frontend/issues/7): spec `0008`
 
 Telas (Fase 3, _Done when_ das telas de F001–F005 e relatórios). Specs de tela com o número da spec de domínio do backend; só o dashboard tem design aprovado, as demais telas seguem um canvas de padrões no Design do Claude.
 
-- [ ] **FCF-008 — Componentes de lista e dados de referência** — [#49](https://github.com/bhenriq-souza/finances-control-frontend/issues/49): spec `0009`: `StatusBadge`, `EntryList`, página **Mais**, primitivas de formulário e consultas de referência compartilhadas
+- [x] **FCF-008 — Componentes de lista e dados de referência** — [#49](https://github.com/bhenriq-souza/finances-control-frontend/issues/49): spec `0009`: `StatusBadge`, `EntryList`, página **Mais**, primitivas de formulário e consultas de referência compartilhadas
 - [ ] **FCF-009 — Administração de usuários e perfis** — [#50](https://github.com/bhenriq-souza/finances-control-frontend/issues/50): spec `0010` (F001): concessão, troca e revogação de perfil, só ADMIN
 - [ ] **FCF-010 — Bancos, contas e cartões** — [#51](https://github.com/bhenriq-souza/finances-control-frontend/issues/51): spec `0011` (F002)
 - [ ] **FCF-011 — Despesas** — [#52](https://github.com/bhenriq-souza/finances-control-frontend/issues/52): spec `0012` (F003): lista, lançamento variável, parcelado e fixo, status e tipos
