@@ -85,12 +85,30 @@ Concluída em 2026-10-09: primeira versão do backend no ar em dev ([roadmap, Fa
 
 ### Repositório do frontend
 
-Issues de entrega `FCF-*` no [`finances-control-frontend`](https://github.com/bhenriq-souza/finances-control-frontend), uma por spec de fundação. As tarefas `T-xxxx-yy` vivem no `docs/backlog.md` daquele repositório, como sub-issues destas.
+Issues de entrega `FCF-*` no [`finances-control-frontend`](https://github.com/bhenriq-souza/finances-control-frontend), uma por spec (de fundação e de tela). As tarefas `T-xxxx-yy` vivem no `docs/backlog.md` daquele repositório, como sub-issues destas.
 
-- [ ] **FCF-001 — Seed do kit agentic-driven no frontend** — [#1](https://github.com/bhenriq-souza/finances-control-frontend/issues/1): `AGENTS.md`, specs `0000`–`0002` com onze gates (os oito do backend mais `contract`, `build` e `e2e`), orquestrador, skills, hook, CI e CodeQL
-- [ ] **FCF-002 — Scaffold e estrutura** — [#2](https://github.com/bhenriq-souza/finances-control-frontend/issues/2): spec `0003`; inclui a página mínima do spike de login
-- [ ] **FCF-003 — Tema gerado do `tokens.json`** — [#3](https://github.com/bhenriq-souza/finances-control-frontend/issues/3): spec `0004`
-- [ ] **FCF-004 — Cliente da API e erros por `code`** — [#4](https://github.com/bhenriq-souza/finances-control-frontend/issues/4): spec `0005`, contrato fixado na tag `v1.1.0` do backend
+- [x] **FCF-001 — Seed do kit agentic-driven no frontend** — [#1](https://github.com/bhenriq-souza/finances-control-frontend/issues/1): `AGENTS.md`, specs `0000`–`0002` com onze gates (os oito do backend mais `contract`, `build` e `e2e`), orquestrador, skills, hook, CI e CodeQL
+- [x] **FCF-002 — Scaffold e estrutura** — [#2](https://github.com/bhenriq-souza/finances-control-frontend/issues/2): spec `0003`; inclui a página mínima do spike de login
+- [x] **FCF-003 — Tema gerado do `tokens.json`** — [#3](https://github.com/bhenriq-souza/finances-control-frontend/issues/3): spec `0004`
+- [x] **FCF-004 — Cliente da API e erros por `code`** — [#4](https://github.com/bhenriq-souza/finances-control-frontend/issues/4): spec `0005`, contrato fixado na tag `v1.1.0` do backend
 - [ ] **FCF-005 — Autenticação, app shell e spike do login Google** — [#5](https://github.com/bhenriq-souza/finances-control-frontend/issues/5): spec `0006`; o spike é a primeira tarefa depois das specs de fundação
-- [ ] **FCF-006 — Publicação do frontend em `dev`** — [#6](https://github.com/bhenriq-souza/finances-control-frontend/issues/6): spec `0007`; imagem nginx, `config.js` por ConfigMap, WIF, manifests e a troca do ingress `/`
-- [ ] **FCF-007 — Dinheiro no cliente (BRL)** — [#7](https://github.com/bhenriq-souza/finances-control-frontend/issues/7): spec `0008`
+- [x] **FCF-006 — Publicação do frontend em `dev`** — [#6](https://github.com/bhenriq-souza/finances-control-frontend/issues/6): spec `0007`; imagem nginx, `config.js` por ConfigMap, WIF, manifests e a troca do ingress `/`
+- [x] **FCF-007 — Dinheiro no cliente (BRL)** — [#7](https://github.com/bhenriq-souza/finances-control-frontend/issues/7): spec `0008`
+
+Telas (Fase 3, _Done when_ das telas de F001–F005 e relatórios). Specs de tela com o número da spec de domínio do backend; só o dashboard tem design aprovado, as demais telas seguem um canvas de padrões no Design do Claude.
+
+- [ ] **FCF-008 — Componentes de lista e dados de referência** — [#49](https://github.com/bhenriq-souza/finances-control-frontend/issues/49): spec `0009`: `StatusBadge`, `EntryList`, página **Mais**, primitivas de formulário e consultas de referência compartilhadas
+- [ ] **FCF-009 — Administração de usuários e perfis** — [#50](https://github.com/bhenriq-souza/finances-control-frontend/issues/50): spec `0010` (F001): concessão, troca e revogação de perfil, só ADMIN
+- [ ] **FCF-010 — Bancos, contas e cartões** — [#51](https://github.com/bhenriq-souza/finances-control-frontend/issues/51): spec `0011` (F002)
+- [ ] **FCF-011 — Despesas** — [#52](https://github.com/bhenriq-souza/finances-control-frontend/issues/52): spec `0012` (F003): lista, lançamento variável, parcelado e fixo, status e tipos
+- [ ] **FCF-012 — Faturas de cartão e estornos** — [#53](https://github.com/bhenriq-souza/finances-control-frontend/issues/53): spec `0013` (F004)
+- [ ] **FCF-013 — Receitas** — [#54](https://github.com/bhenriq-souza/finances-control-frontend/issues/54): spec `0014` (F005)
+- [ ] **FCF-014 — Dashboard de saldo e relatórios** — [#55](https://github.com/bhenriq-souza/finances-control-frontend/issues/55): spec `0015`: o dashboard aprovado no lugar da tela inicial provisória, e os relatórios
+- [ ] **FCF-015 — Séries fixas** — [#56](https://github.com/bhenriq-souza/finances-control-frontend/issues/56): spec `0017`: listagem e encerramento das séries de despesas e de receitas
+- [ ] **FCF-016 — Transferências entre contas** — [#57](https://github.com/bhenriq-souza/finances-control-frontend/issues/57): spec `0018`
+
+#### Pendências registradas (sem execução agendada)
+
+- [ ] **DNS de `homelab.local` para os aparelhos da rede** — adiado por decisão do responsável; até lá, celular e tablet entram por `finances.192.168.15.97.nip.io`. Proposta para quando voltar: fixar o DNS do nó, tornar o CoreDNS do cluster recursivo e apontar o DNS do DHCP do roteador para ele
+- [ ] **Content-Security-Policy no nginx do frontend** — a spec `0007` adiou para depois do spike; o script inline de tema (spec `0004`) precisará de hash
+- [ ] **Unificar as regras de lint de cor e de dinheiro** — hoje a de cor reexpõe `no-restricted-syntax` como `ftech/no-restricted-syntax`; opcional, num bloco só
