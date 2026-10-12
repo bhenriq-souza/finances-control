@@ -12,6 +12,7 @@ Decidido pelo responsável em 2026-10-11, pela FC-006, com o Design System e o D
 | -------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------- |
 | Design System (livro da marca, tokens, componentes) | [claude.ai/artifact/DxDnUbE9sSQdJbxTPh6WPQ](https://claude.ai/artifact/DxDnUbE9sSQdJbxTPh6WPQ) | `1791756594-5be0` |
 | Design do dashboard de saldo (seis artboards)       | [claude.ai/artifact/HEj1d1jqqwAPMBVYZdMsyy](https://claude.ai/artifact/HEj1d1jqqwAPMBVYZdMsyy) | `1791757029-deb7` |
+| Canvas de padrões de tela (24 artboards, escuro e claro) | [claude.ai/artifact/YA6oWvBzWghdVTa2kAFTkC](https://claude.ai/artifact/YA6oWvBzWghdVTa2kAFTkC) | `1791836639-e596` |
 | Tokens, fonte de verdade para o código             | [`tokens.json`](tokens.json)                                                  | cópia da versão acima |
 | Verificação de contraste                            | [`check-contrast.mjs`](check-contrast.mjs)                                    |                   |
 | Marca da FarmTech (logo, símbolo, ícones)           | [`assets/`](assets/)                                                          |                   |
@@ -57,7 +58,7 @@ do artifact sem conversão, e o gerador do tema do frontend lê este formato.
 
 ## Telas aprovadas
 
-O canvas tem seis artboards, nos dois temas:
+O canvas do dashboard tem seis artboards, nos dois temas:
 
 | Artboard             | Tamanho    | Arquivo no canvas       |
 | -------------------- | ---------- | ----------------------- |
@@ -68,7 +69,16 @@ O canvas tem seis artboards, nos dois temas:
 | Tablet · claro       | 834 × 1112 | `TabletClaro.dc.html`   |
 | Desktop · claro      | 1440 × 900 | `DesktopClaro.dc.html`  |
 
-PNGs exportados ficam em `screens/` quando houver; até lá, o canvas é a referência.
+O [canvas de padrões](https://claude.ai/artifact/YA6oWvBzWghdVTa2kAFTkC), aprovado em 2026-10-12, dá a
+forma das demais telas (specs `0009`–`0018` do frontend): lista de lançamentos, formulário (folha
+no celular, diálogo no desktop), fatura com pagamento, cadastros com confirmação, relatórios, a
+página **Mais** e usuários — cada um em celular e desktop, nos dois temas (24 artboards). As telas
+são montadas a partir dele e dos componentes do Design System, sem artboard por tela. As peças que
+ele desenha e o Design System ainda não define (diálogo, folha, select, abas, véu do diálogo, botão
+destrutivo, cores de gráfico, entre outras) estão listadas nas questões abertas da spec `0009` e
+voltam ao Design System quando forem formalizadas.
+
+PNGs exportados ficam em `screens/` quando houver; até lá, os canvas são a referência.
 
 ## Como mudar
 
