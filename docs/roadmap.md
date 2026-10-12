@@ -110,7 +110,7 @@ Stack decidida no [ADR-0001](adr/ADR-0001-frontend.md): React 19 + Vite, SPA pur
 
 **Decisões do levantamento de 2026-10-10:**
 - `/api` por `stripPrefix` no ingress, com as rotas do backend na raiz ([ADR-0008](adr/ADR-0008-api-path-prefix.md)).
-- Firebase no projeto `dev-financial-control`, com email verificado no bootstrap ([ADR-0009](adr/ADR-0009-firebase-project.md)).
+- Firebase no projeto `dev-financial-control` ([ADR-0010](adr/ADR-0010-firebase-project-dev.md)), com email verificado no bootstrap ([ADR-0009](adr/ADR-0009-firebase-project.md)).
 - Contrato OpenAPI baixado do backend no build do frontend, fixado numa tag ou num commit.
 - UI só em pt-BR, com as mensagens de erro traduzidas pelo `code` da API.
 - Login por email/senha e Google; `PROFILE_PENDING` leva a uma tela de aguardando aprovação.
@@ -119,10 +119,10 @@ Stack decidida no [ADR-0001](adr/ADR-0001-frontend.md): React 19 + Vite, SPA pur
 - **Execução:** subagentes em worktrees, como na Fase 2. O piloto de Agent Teams (FC-007) foi encerrado sem execução.
 
 **Done when:**
-- [ ] Backend pronto para o frontend: erros em JSON, contrato de erros, publicação sob `/api` (FCB-020) e email verificado com a troca de projeto do Firebase (revisão da FCB-007)
-- [ ] Projeto Firebase configurado para o login (FC-008)
+- [x] Backend pronto para o frontend: erros em JSON, contrato de erros, publicação sob `/api` (FCB-020) e email verificado com a troca de projeto do Firebase (revisão da FCB-007) — concluído em 2026-10-11; contrato marcado na tag `v1.1.0` do backend, que o frontend fixa
+- [x] Projeto Firebase configurado para o login (FC-008) — `dev-financial-control`, 2026-10-10
 - [x] Identidade visual e design tokens definidos — FC-006, pelo Design System e pelo Design do Claude: [identidade visual](design/visual-identity.md), produto FTech Finance com a marca da FarmTech
-- [ ] Repo `finances-control-frontend` criado com o kit agentic-driven, scaffold do ADR-0001 e pipeline validado (tarefas `FCF-*`, a abrir quando o repo existir)
+- [ ] Repo [`finances-control-frontend`](https://github.com/bhenriq-souza/finances-control-frontend) criado com o kit agentic-driven, scaffold do ADR-0001 e pipeline validado (FCF-001 a FCF-007) — repositório criado em 2026-10-12, kit e specs de fundação em revisão
 - [ ] Spike: login Google (Firebase) validado numa origem HTTP fora de `localhost`, antes da spec de login — risco registrado no [ADR-0006](adr/ADR-0006-auth.md)
 - [ ] Backend publicado sob `/api` e frontend em `/`, no mesmo host
 - [ ] Telas de F001–F005 e relatórios consumindo a API pelo cliente gerado do OpenAPI, responsivas nos três breakpoints

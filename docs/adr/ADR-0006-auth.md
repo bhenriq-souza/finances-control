@@ -1,6 +1,6 @@
 # ADR-0006 — Autenticação: Firebase Auth
 
-- Status: **accepted** — o projeto Firebase e a condição de email verificado foram alterados pelo [ADR-0009](ADR-0009-firebase-project.md)
+- Status: **accepted** — o projeto Firebase e a condição de email verificado foram alterados pelo [ADR-0009](ADR-0009-firebase-project.md), e o projeto, de novo, pelo [ADR-0010](ADR-0010-firebase-project-dev.md)
 - Data: 2026-09-03
 
 ## Context

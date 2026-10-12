@@ -41,10 +41,11 @@ Concluída em 2026-10-09: primeira versão do backend no ar em dev ([roadmap, Fa
 
 ## Fase 3 — Frontend
 
-- [ ] **FCB-020 — Plataforma HTTP para o frontend** (backend, spec `0005`): erros de protocolo em JSON, códigos de erro enumerados no contrato, `401`/`403` declarados e a publicação sob `/api` por `stripPrefix` ([ADR-0008](adr/ADR-0008-api-path-prefix.md))
-- [ ] **FCB-007, revisão de 2026-10-10** (backend, spec `0010`): email verificado no bootstrap, re-vínculo por email verificado e troca do projeto Firebase para `homelab-492918` ([ADR-0009](adr/ADR-0009-firebase-project.md))
+- [x] **FCB-020 — Plataforma HTTP para o frontend** (backend, spec `0005`): erros de protocolo em JSON, códigos de erro enumerados no contrato, `401`/`403` declarados e a publicação sob `/api` por `stripPrefix` ([ADR-0008](adr/ADR-0008-api-path-prefix.md))
+- [x] **FCB-007, revisão de 2026-10-10** (backend, spec `0010`): email verificado no bootstrap, re-vínculo por email verificado e troca do projeto Firebase para `dev-financial-control` ([ADR-0009](adr/ADR-0009-firebase-project.md), [ADR-0010](adr/ADR-0010-firebase-project-dev.md))
 
-- [ ] **FC-008 — Configurar o projeto Firebase para o login do F001** — [#16](https://github.com/bhenriq-souza/finances-control/issues/16)
+- [x] **FC-008 — Configurar o projeto Firebase para o login do F001** — [#16](https://github.com/bhenriq-souza/finances-control/issues/16)
+    - Concluída em 2026-10-10 no projeto **`dev-financial-control`** ([ADR-0010](adr/ADR-0010-firebase-project-dev.md)), e não no `homelab-492918` que o texto abaixo, escrito antes da correção, cita: provedores email/senha e Google, `finances.dev.homelab.local` autorizado, app Web `finances-frontend` e a chave como versão 2 do secret `homelab-dev-finances-firebase-service-account`.
     - What: no projeto `homelab-492918` ([ADR-0009](adr/ADR-0009-firebase-project.md)), onde o Firebase já foi ativado em 2026-10-10:
         1. habilitar os provedores **email/senha** e **Google**;
         2. acrescentar `finances.dev.homelab.local` aos domínios autorizados;
@@ -81,3 +82,15 @@ Concluída em 2026-10-09: primeira versão do backend no ar em dev ([roadmap, Fa
       - dashboard de saldo prototipado nos três breakpoints com experiência agradável em cada um ([requisitos §4](business-requirements.md#4-requisitos-não-funcionais));
       - `visual-identity.md` aprovado.
   - Why: o frontend nasce mobile-first e o tema do shadcn/ui é alimentado por tokens — sem identidade definida, as primeiras telas nascem com valores padrão e viram retrabalho. Os artifacts vivem fora do git; por isso os tokens e as telas aprovadas ficam versionados aqui, e nas specs de tela o comportamento continua mandando sobre o design
+
+### Repositório do frontend
+
+Issues de entrega `FCF-*` no [`finances-control-frontend`](https://github.com/bhenriq-souza/finances-control-frontend), uma por spec de fundação. As tarefas `T-xxxx-yy` vivem no `docs/backlog.md` daquele repositório, como sub-issues destas.
+
+- [ ] **FCF-001 — Seed do kit agentic-driven no frontend** — [#1](https://github.com/bhenriq-souza/finances-control-frontend/issues/1): `AGENTS.md`, specs `0000`–`0002` com onze gates (os oito do backend mais `contract`, `build` e `e2e`), orquestrador, skills, hook, CI e CodeQL
+- [ ] **FCF-002 — Scaffold e estrutura** — [#2](https://github.com/bhenriq-souza/finances-control-frontend/issues/2): spec `0003`; inclui a página mínima do spike de login
+- [ ] **FCF-003 — Tema gerado do `tokens.json`** — [#3](https://github.com/bhenriq-souza/finances-control-frontend/issues/3): spec `0004`
+- [ ] **FCF-004 — Cliente da API e erros por `code`** — [#4](https://github.com/bhenriq-souza/finances-control-frontend/issues/4): spec `0005`, contrato fixado na tag `v1.1.0` do backend
+- [ ] **FCF-005 — Autenticação, app shell e spike do login Google** — [#5](https://github.com/bhenriq-souza/finances-control-frontend/issues/5): spec `0006`; o spike é a primeira tarefa depois das specs de fundação
+- [ ] **FCF-006 — Publicação do frontend em `dev`** — [#6](https://github.com/bhenriq-souza/finances-control-frontend/issues/6): spec `0007`; imagem nginx, `config.js` por ConfigMap, WIF, manifests e a troca do ingress `/`
+- [ ] **FCF-007 — Dinheiro no cliente (BRL)** — [#7](https://github.com/bhenriq-souza/finances-control-frontend/issues/7): spec `0008`
