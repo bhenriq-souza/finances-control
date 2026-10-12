@@ -122,9 +122,9 @@ Stack decidida no [ADR-0001](adr/ADR-0001-frontend.md): React 19 + Vite, SPA pur
 - [x] Backend pronto para o frontend: erros em JSON, contrato de erros, publicação sob `/api` (FCB-020) e email verificado com a troca de projeto do Firebase (revisão da FCB-007) — concluído em 2026-10-11; contrato marcado na tag `v1.1.0` do backend, que o frontend fixa
 - [x] Projeto Firebase configurado para o login (FC-008) — `dev-financial-control`, 2026-10-10
 - [x] Identidade visual e design tokens definidos — FC-006, pelo Design System e pelo Design do Claude: [identidade visual](design/visual-identity.md), produto FTech Finance com a marca da FarmTech
-- [ ] Repo [`finances-control-frontend`](https://github.com/bhenriq-souza/finances-control-frontend) criado com o kit agentic-driven, scaffold do ADR-0001 e pipeline validado (FCF-001 a FCF-007) — repositório criado em 2026-10-12, kit e specs de fundação em revisão
-- [ ] Spike: login Google (Firebase) validado numa origem HTTP fora de `localhost`, antes da spec de login — risco registrado no [ADR-0006](adr/ADR-0006-auth.md)
-- [ ] Backend publicado sob `/api` e frontend em `/`, no mesmo host
+- [x] Repo [`finances-control-frontend`](https://github.com/bhenriq-souza/finances-control-frontend) criado com o kit agentic-driven, scaffold do ADR-0001 e pipeline validado — concluído em 2026-10-12: kit (FCF-001), scaffold com os onze gates (FCF-002) e publicação em `dev` pelo workflow reutilizável (FCF-006); tema, cliente da API, autenticação e dinheiro (FCF-003, 004, 005 e 007) seguem em andamento
+- [x] Spike: login Google (Firebase) validado numa origem HTTP fora de `localhost`, antes da spec de login — risco registrado no [ADR-0006](adr/ADR-0006-auth.md); passou em 2026-10-12 no desktop e no celular (`signInWithPopup`, `GET /api/users/me` com 200), sem precisar de TLS. O celular entrou por `finances.192.168.15.97.nip.io`, porque o roteador não encaminha o DNS de `homelab.local`
+- [x] Backend publicado sob `/api` e frontend em `/`, no mesmo host — `finances.dev.homelab.local`, desde 2026-10-12
 - [ ] Telas de F001–F005 e relatórios consumindo a API pelo cliente gerado do OpenAPI, responsivas nos três breakpoints
 
 ## Fase 4 — Promoção a prd
