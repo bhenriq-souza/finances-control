@@ -125,7 +125,7 @@ Stack decidida no [ADR-0001](adr/ADR-0001-frontend.md): React 19 + Vite, SPA pur
 - [x] Repo [`finances-control-frontend`](https://github.com/bhenriq-souza/finances-control-frontend) criado com o kit agentic-driven, scaffold do ADR-0001 e pipeline validado — concluído em 2026-10-12: kit (FCF-001), scaffold com os onze gates (FCF-002) e publicação em `dev` pelo workflow reutilizável (FCF-006); tema, cliente da API, autenticação e dinheiro (FCF-003, 004, 005 e 007) seguem em andamento
 - [x] Spike: login Google (Firebase) validado numa origem HTTP fora de `localhost`, antes da spec de login — risco registrado no [ADR-0006](adr/ADR-0006-auth.md); passou em 2026-10-12 no desktop e no celular (`signInWithPopup`, `GET /api/users/me` com 200), sem precisar de TLS. O celular entrou por `finances.192.168.15.97.nip.io`, porque o roteador não encaminha o DNS de `homelab.local`
 - [x] Backend publicado sob `/api` e frontend em `/`, no mesmo host — `finances.dev.homelab.local`, desde 2026-10-12
-- [ ] Telas de F001–F005 e relatórios consumindo a API pelo cliente gerado do OpenAPI, responsivas nos três breakpoints
+- [ ] Telas de F001–F005 e relatórios consumindo a API pelo cliente gerado do OpenAPI, responsivas nos três breakpoints — em andamento: em 2026-10-13 estavam concluídas as telas de usuários (F001), contas e cartões (F002), despesas (F003), receitas (F005) e transferências (FCF-009, 010, 011, 013 e 016); faltam faturas e estornos (FCF-012, F004), dashboard e relatórios (FCF-014) e séries fixas (FCF-015)
 
 ## Fase 4 — Promoção a prd
 
