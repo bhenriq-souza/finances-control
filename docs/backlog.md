@@ -101,10 +101,10 @@ Telas (Fase 3, _Done when_ das telas de F001–F005 e relatórios). Specs de tel
 - [x] **FCF-009 — Administração de usuários e perfis** — [#50](https://github.com/bhenriq-souza/finances-control-frontend/issues/50): spec `0010` (F001): concessão, troca e revogação de perfil, só ADMIN
 - [x] **FCF-010 — Bancos, contas e cartões** — [#51](https://github.com/bhenriq-souza/finances-control-frontend/issues/51): spec `0011` (F002)
 - [x] **FCF-011 — Despesas** — [#52](https://github.com/bhenriq-souza/finances-control-frontend/issues/52): spec `0012` (F003): lista, lançamento variável, parcelado e fixo, status e tipos
-- [ ] **FCF-012 — Faturas de cartão e estornos** — [#53](https://github.com/bhenriq-souza/finances-control-frontend/issues/53): spec `0013` (F004)
+- [x] **FCF-012 — Faturas de cartão e estornos** — [#53](https://github.com/bhenriq-souza/finances-control-frontend/issues/53): spec `0013` (F004)
 - [x] **FCF-013 — Receitas** — [#54](https://github.com/bhenriq-souza/finances-control-frontend/issues/54): spec `0014` (F005)
-- [ ] **FCF-014 — Dashboard de saldo e relatórios** — [#55](https://github.com/bhenriq-souza/finances-control-frontend/issues/55): spec `0015`: o dashboard aprovado no lugar da tela inicial provisória, e os relatórios
-- [ ] **FCF-015 — Séries fixas** — [#56](https://github.com/bhenriq-souza/finances-control-frontend/issues/56): spec `0017`: listagem e encerramento das séries de despesas e de receitas
+- [x] **FCF-014 — Dashboard de saldo e relatórios** — [#55](https://github.com/bhenriq-souza/finances-control-frontend/issues/55): spec `0015`: o dashboard aprovado no lugar da tela inicial provisória, e os relatórios
+- [x] **FCF-015 — Séries fixas** — [#56](https://github.com/bhenriq-souza/finances-control-frontend/issues/56): spec `0017`: listagem e encerramento das séries de despesas e de receitas
 - [x] **FCF-016 — Transferências entre contas** — [#57](https://github.com/bhenriq-souza/finances-control-frontend/issues/57): spec `0018`
 
 #### Pendências registradas (sem execução agendada)
