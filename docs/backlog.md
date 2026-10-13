@@ -112,3 +112,16 @@ Telas (Fase 3, _Done when_ das telas de F001–F005 e relatórios). Specs de tel
 - [ ] **DNS de `homelab.local` para os aparelhos da rede** — adiado por decisão do responsável; até lá, celular e tablet entram por `finances.192.168.15.97.nip.io`. Proposta para quando voltar: fixar o DNS do nó, tornar o CoreDNS do cluster recursivo e apontar o DNS do DHCP do roteador para ele
 - [ ] **Content-Security-Policy no nginx do frontend** — a spec `0007` adiou para depois do spike; o script inline de tema (spec `0004`) precisará de hash
 - [ ] **Unificar as regras de lint de cor e de dinheiro** — hoje a de cor reexpõe `no-restricted-syntax` como `ftech/no-restricted-syntax`; opcional, num bloco só
+
+## Fase 3.1 — Ajustes dos testes em dev
+
+Pontos levantados pelo responsável ao testar `dev` com o roteiro de testes, em 2026-10-13. Cada item segue o fluxo spec-driven do seu repositório: PR de spec primeiro, depois a implementação.
+
+- [ ] **FCF-017 — Ajustes dos testes em dev** — [#119](https://github.com/bhenriq-souza/finances-control-frontend/issues/119): specs `0009`, `0012`, `0013`, `0014`: botões e **Mostrar arquivados** padronizados nas telas de tipos, lista depois de criar, menu do usuário acima do botão flutuante, **Fatura de** opcional e escondido com a fatura inferida, caminho para a fatura atual, favicon
+- [ ] **FCF-018 — Seletor de data próprio** — [#120](https://github.com/bhenriq-souza/finances-control-frontend/issues/120): ADR local e spec `0009`: digitação dd/mm/aaaa e calendário em pt-BR do shadcn/ui, no lugar do `<input type="date">` nativo
+- [ ] **FCF-019 — Ações rápidas nas listas** — [#121](https://github.com/bhenriq-souza/finances-control-frontend/issues/121): specs `0009`, `0012`, `0014`: pagar, receber, confirmar, editar e excluir pela lista; **Mais ações** no detalhe pelo celular
+- [ ] **FCF-020 — Fluxo de caixa** — [#122](https://github.com/bhenriq-souza/finances-control-frontend/issues/122): spec `0019` nova: tela por mês com saldos, entradas e saídas, e a lista do mês com uma linha por fatura de cartão
+- [ ] **FCB-021 — Extrato de conta** (backend) — [#178](https://github.com/bhenriq-souza/finances-control-backend/issues/178): movimentos de uma conta num período, com saldo inicial e saldo após cada movimento
+- [ ] **FCF-021 — Extrato de conta** — [#123](https://github.com/bhenriq-souza/finances-control-frontend/issues/123): aba **Extrato** no detalhe da conta; depende da FCB-021
+- [ ] **FCB-022 — Foto do usuário** (backend) — [#179](https://github.com/bhenriq-souza/finances-control-backend/issues/179): spec `0010` revisada; foto guardada no backend, sem Firebase Storage (que exigiria faturamento no projeto)
+- [ ] **FCF-022 — Foto do usuário** — [#124](https://github.com/bhenriq-souza/finances-control-frontend/issues/124): enviar, trocar e remover a foto pelo menu do usuário; depende da FCB-022

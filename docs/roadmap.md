@@ -127,6 +127,23 @@ Stack decidida no [ADR-0001](adr/ADR-0001-frontend.md): React 19 + Vite, SPA pur
 - [x] Backend publicado sob `/api` e frontend em `/`, no mesmo host — `finances.dev.homelab.local`, desde 2026-10-12
 - [x] Telas de F001–F005 e relatórios consumindo a API pelo cliente gerado do OpenAPI, responsivas nos três breakpoints — concluído em 2026-10-13: usuários (F001), contas e cartões (F002), despesas (F003), faturas e estornos (F004), receitas (F005), transferências, dashboard de saldo, relatórios e séries fixas (FCF-008 a FCF-016), publicados em `dev`
 
+## Fase 3.1 — Ajustes dos testes em dev
+
+Ajustes e funcionalidades pedidos pelo responsável ao testar `dev` em 2026-10-13, antes da promoção a prd. Itens no [backlog](backlog.md#fase-31--ajustes-dos-testes-em-dev).
+
+**Decisões de 2026-10-13:**
+- Seletor de data próprio (shadcn/ui), no lugar do nativo, que é ruim no Firefox para Android.
+- Extrato de conta autorizado, com endpoint novo no backend.
+- No fluxo de caixa, o gasto de cartão aparece como uma linha por fatura, que é o que sai da conta.
+- Foto do usuário guardada no backend: o Firebase Storage exigiria ligar o faturamento no projeto.
+
+**Ordem:** ajustes (FCF-017) junto com o extrato no backend (FCB-021); depois o seletor de data (FCF-018), as ações rápidas (FCF-019), a tela de extrato (FCF-021), o fluxo de caixa (FCF-020) e a foto do usuário (FCB-022 e FCF-022).
+
+**Done when:**
+- [ ] FCF-017 a FCF-022, FCB-021 e FCB-022 concluídas e publicadas em `dev`
+- [ ] Testes do responsável no tablet
+- [ ] Novo ok do responsável para a Fase 4
+
 ## Fase 4 — Promoção a prd
 
 Definir gates de promoção dev→prd (hoje `prd-apps` está vazio no cluster), backup do PostgreSQL implementado antes de dados reais.
