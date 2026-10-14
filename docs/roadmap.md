@@ -137,10 +137,14 @@ Ajustes e funcionalidades pedidos pelo responsável ao testar `dev` em 2026-10-1
 - No fluxo de caixa, o gasto de cartão aparece como uma linha por fatura, que é o que sai da conta.
 - Foto do usuário guardada no backend: o Firebase Storage exigiria ligar o faturamento no projeto.
 
+**Decisões de 2026-10-14:**
+- Filtro por conta no fluxo de caixa; com uma conta escolhida, as transferências dela entram na lista, e o backend devolve as faturas do mês por conta (`cardDueCents`).
+- Contrato do backend na tag `v1.3.0` (foto do usuário e faturas do mês por conta), fixada pelo frontend.
+
 **Ordem:** ajustes (FCF-017) junto com o extrato no backend (FCB-021); depois o seletor de data (FCF-018), as ações rápidas (FCF-019), a tela de extrato (FCF-021), o fluxo de caixa (FCF-020) e a foto do usuário (FCB-022 e FCF-022).
 
 **Done when:**
-- [ ] FCF-017 a FCF-022, FCB-021 e FCB-022 concluídas e publicadas em `dev`
+- [x] FCF-017 a FCF-022, FCB-021 e FCB-022 concluídas e publicadas em `dev` — concluído em 2026-10-14: backend `f432b00` (tag `v1.3.0`) e frontend `6016de0` publicados pelo deploy de `develop`
 - [ ] Testes do responsável no tablet
 - [ ] Novo ok do responsável para a Fase 4
 
