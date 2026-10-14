@@ -15,3 +15,4 @@ Formato: Context · Decision · Consequences · Alternatives considered. ADRs ac
 | [ADR-0008](ADR-0008-api-path-prefix.md) | Publicação da API sob `/api` por `stripPrefix` no ingress | accepted |
 | [ADR-0009](ADR-0009-firebase-project.md) | Projeto Firebase `homelab-492918` e email verificado | accepted (projeto: ADR-0010) |
 | [ADR-0010](ADR-0010-firebase-project-dev.md) | Projeto Firebase `dev-financial-control` | accepted |
+| [ADR-0011](ADR-0011-prd-environment.md) | Ambiente `prd` no homelab | accepted |
