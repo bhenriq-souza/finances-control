@@ -125,3 +125,14 @@ Pontos levantados pelo responsável ao testar `dev` com o roteiro de testes, em 
 - [x] **FCF-021 — Extrato de conta** — [#123](https://github.com/bhenriq-souza/finances-control-frontend/issues/123): revisão da spec `0015`: extrato em `/contas/$contaId`, com o link **Extrato** na lista de contas; depende da FCB-021
 - [x] **FCB-022 — Foto do usuário** (backend) — [#179](https://github.com/bhenriq-souza/finances-control-backend/issues/179): spec `0010` revisada; foto guardada no backend, sem Firebase Storage (que exigiria faturamento no projeto)
 - [x] **FCF-022 — Foto do usuário** — [#124](https://github.com/bhenriq-souza/finances-control-frontend/issues/124): enviar, trocar e remover a foto pelo menu do usuário; depende da FCB-022
+
+## Fase 4 — Promoção a prd
+
+Publicação em `prd`, só na rede de casa ([ADR-0011](adr/ADR-0011-prd-environment.md)). Recursos fora dos repositórios (projeto Firebase, secrets, manifests no cluster, pasta no Drive) só são criados com o ok do responsável em cada item.
+
+- [ ] **FC-009 — Projeto Firebase de `prd`** — o responsável cria o projeto na conta pessoal, com email/senha e Google, os dois endereços de `prd` nos domínios autorizados e o app Web; a chave da service account vai para o Secret Manager do `homelab-492918`
+- [ ] **FC-010 — Manifests de `prd` no `homelab-gitops`** — em `clusters/homelab/workloads/prd`: PostgreSQL próprio, backend, frontend, ingress nos dois endereços e ExternalSecrets do `gcp-prd` (banco, Firebase, email do admin de bootstrap); deploy de `main` para `prd` nos dois repositórios
+- [ ] **FC-011 — Backup do PostgreSQL de `prd`** — CronJob diário com `pg_dump`, cópia em `/data/backups` no mini PC e na pasta `backups` do Drive (rclone com token OAuth do responsável no Secret Manager), retenção definida, e uma restauração testada num banco descartável
+- [ ] **FCB-023 — Carga inicial de `prd`** (backend) — script que lê os CSVs da planilha `finances-control - carga inicial prd` e grava pelos serviços do domínio, para que saldos, faturas e parcelas sigam as invariantes; roda da máquina do responsável, sem os dados entrarem no Git; as faturas já fechadas e não pagas entram como despesa da conta pagadora no vencimento
+- [ ] **FC-012 — Primeira promoção a `prd`** — criar `main` no backend, merge de `develop` em `main` nos dois repositórios, sync do Argo CD e checagem de fumaça (`/health` e página inicial)
+
