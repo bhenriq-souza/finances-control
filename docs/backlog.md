@@ -117,11 +117,22 @@ Telas (Fase 3, _Done when_ das telas de F001–F005 e relatórios). Specs de tel
 
 Pontos levantados pelo responsável ao testar `dev` com o roteiro de testes, em 2026-10-13. Cada item segue o fluxo spec-driven do seu repositório: PR de spec primeiro, depois a implementação.
 
-- [ ] **FCF-017 — Ajustes dos testes em dev** — [#119](https://github.com/bhenriq-souza/finances-control-frontend/issues/119): specs `0009`, `0012`, `0013`, `0014`: botões e **Mostrar arquivados** padronizados nas telas de tipos, lista depois de criar, menu do usuário acima do botão flutuante, **Fatura de** opcional e escondido com a fatura inferida, caminho para a fatura atual, favicon
-- [ ] **FCF-018 — Seletor de data próprio** — [#120](https://github.com/bhenriq-souza/finances-control-frontend/issues/120): ADR local e spec `0009`: digitação dd/mm/aaaa e calendário em pt-BR do shadcn/ui, no lugar do `<input type="date">` nativo
-- [ ] **FCF-019 — Ações rápidas nas listas** — [#121](https://github.com/bhenriq-souza/finances-control-frontend/issues/121): specs `0009`, `0012`, `0014`: pagar, receber, confirmar, editar e excluir pela lista; **Mais ações** no detalhe pelo celular
-- [ ] **FCF-020 — Fluxo de caixa** — [#122](https://github.com/bhenriq-souza/finances-control-frontend/issues/122): spec `0019` nova: tela por mês com saldos, entradas e saídas, e a lista do mês com uma linha por fatura de cartão
-- [ ] **FCB-021 — Extrato de conta** (backend) — [#178](https://github.com/bhenriq-souza/finances-control-backend/issues/178): movimentos de uma conta num período, com saldo inicial e saldo após cada movimento
-- [ ] **FCF-021 — Extrato de conta** — [#123](https://github.com/bhenriq-souza/finances-control-frontend/issues/123): aba **Extrato** no detalhe da conta; depende da FCB-021
-- [ ] **FCB-022 — Foto do usuário** (backend) — [#179](https://github.com/bhenriq-souza/finances-control-backend/issues/179): spec `0010` revisada; foto guardada no backend, sem Firebase Storage (que exigiria faturamento no projeto)
-- [ ] **FCF-022 — Foto do usuário** — [#124](https://github.com/bhenriq-souza/finances-control-frontend/issues/124): enviar, trocar e remover a foto pelo menu do usuário; depende da FCB-022
+- [x] **FCF-017 — Ajustes dos testes em dev** — [#119](https://github.com/bhenriq-souza/finances-control-frontend/issues/119): specs `0009`, `0012`, `0013`, `0014`: botões e **Mostrar arquivados** padronizados nas telas de tipos, lista depois de criar, menu do usuário acima do botão flutuante, **Fatura de** opcional e escondido com a fatura inferida, caminho para a fatura atual, favicon
+- [x] **FCF-018 — Seletor de data próprio** — [#120](https://github.com/bhenriq-souza/finances-control-frontend/issues/120): ADR local e spec `0009`: digitação dd/mm/aaaa e calendário em pt-BR do shadcn/ui, no lugar do `<input type="date">` nativo
+- [x] **FCF-019 — Ações rápidas nas listas** — [#121](https://github.com/bhenriq-souza/finances-control-frontend/issues/121): specs `0009`, `0012`, `0014`: pagar, receber, confirmar, editar e excluir pela lista; **Mais ações** no detalhe pelo celular
+- [x] **FCF-020 — Fluxo de caixa** — [#122](https://github.com/bhenriq-souza/finances-control-frontend/issues/122): revisão da spec `0015` (as telas usam o número da spec do backend que consomem): `/fluxo-de-caixa`, tela por mês com saldos, entradas e saídas, a lista do mês com uma linha por fatura de cartão, filtro de situação e, desde 2026-10-14, filtro por conta, com as transferências da conta
+- [x] **FCB-021 — Extrato de conta** (backend) — [#178](https://github.com/bhenriq-souza/finances-control-backend/issues/178): movimentos de uma conta num período, com saldo inicial e saldo após cada movimento
+- [x] **FCF-021 — Extrato de conta** — [#123](https://github.com/bhenriq-souza/finances-control-frontend/issues/123): revisão da spec `0015`: extrato em `/contas/$contaId`, com o link **Extrato** na lista de contas; depende da FCB-021
+- [x] **FCB-022 — Foto do usuário** (backend) — [#179](https://github.com/bhenriq-souza/finances-control-backend/issues/179): spec `0010` revisada; foto guardada no backend, sem Firebase Storage (que exigiria faturamento no projeto)
+- [x] **FCF-022 — Foto do usuário** — [#124](https://github.com/bhenriq-souza/finances-control-frontend/issues/124): enviar, trocar e remover a foto pelo menu do usuário; depende da FCB-022
+
+## Fase 4 — Promoção a prd
+
+Publicação em `prd`, só na rede de casa ([ADR-0011](adr/ADR-0011-prd-environment.md)). Recursos fora dos repositórios (projeto Firebase, secrets, manifests no cluster, pasta no Drive) só são criados com o ok do responsável em cada item.
+
+- [ ] **FC-009 — Projeto Firebase de `prd`** — o responsável cria o projeto na conta pessoal, com email/senha e Google, os dois endereços de `prd` nos domínios autorizados e o app Web; a chave da service account vai para o Secret Manager do `homelab-492918`
+- [ ] **FC-010 — Manifests de `prd` no `homelab-gitops`** — em `clusters/homelab/workloads/prd`: PostgreSQL próprio, backend, frontend, ingress nos dois endereços e ExternalSecrets do `gcp-prd` (banco, Firebase, email do admin de bootstrap); deploy de `main` para `prd` nos dois repositórios
+- [ ] **FC-011 — Backup do PostgreSQL de `prd`** — CronJob diário com `pg_dump`, cópia em `/data/backups` no mini PC e na pasta `backups` do Drive (rclone com token OAuth do responsável no Secret Manager), retenção definida, e uma restauração testada num banco descartável
+- [ ] **FCB-023 — Carga inicial de `prd`** (backend) — script que lê os CSVs da planilha `finances-control - carga inicial prd` e grava pelos serviços do domínio, para que saldos, faturas e parcelas sigam as invariantes; roda da máquina do responsável, sem os dados entrarem no Git; as faturas já fechadas e não pagas entram como despesa da conta pagadora no vencimento
+- [ ] **FC-012 — Primeira promoção a `prd`** — criar `main` no backend, merge de `develop` em `main` nos dois repositórios, sync do Argo CD e checagem de fumaça (`/health` e página inicial)
+

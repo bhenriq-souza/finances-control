@@ -137,18 +137,40 @@ Ajustes e funcionalidades pedidos pelo responsável ao testar `dev` em 2026-10-1
 - No fluxo de caixa, o gasto de cartão aparece como uma linha por fatura, que é o que sai da conta.
 - Foto do usuário guardada no backend: o Firebase Storage exigiria ligar o faturamento no projeto.
 
+**Decisões de 2026-10-14:**
+- Filtro por conta no fluxo de caixa; com uma conta escolhida, as transferências dela entram na lista, e o backend devolve as faturas do mês por conta (`cardDueCents`).
+- Contrato do backend na tag `v1.3.0` (foto do usuário e faturas do mês por conta), fixada pelo frontend.
+
 **Ordem:** ajustes (FCF-017) junto com o extrato no backend (FCB-021); depois o seletor de data (FCF-018), as ações rápidas (FCF-019), a tela de extrato (FCF-021), o fluxo de caixa (FCF-020) e a foto do usuário (FCB-022 e FCF-022).
 
 **Done when:**
-- [ ] FCF-017 a FCF-022, FCB-021 e FCB-022 concluídas e publicadas em `dev`
+- [x] FCF-017 a FCF-022, FCB-021 e FCB-022 concluídas e publicadas em `dev` — concluído em 2026-10-14: backend `f432b00` (tag `v1.3.0`) e frontend `6016de0` publicados pelo deploy de `develop`
 - [ ] Testes do responsável no tablet
-- [ ] Novo ok do responsável para a Fase 4
+- [x] Novo ok do responsável para a Fase 4 — dado em 2026-10-14
 
 ## Fase 4 — Promoção a prd
 
-Definir gates de promoção dev→prd (hoje `prd-apps` está vazio no cluster), backup do PostgreSQL implementado antes de dados reais.
+Publicar o sistema em `prd`, só na rede de casa, com backup do PostgreSQL antes dos dados reais e a carga inicial tirada da planilha. Decisões no [ADR-0011](adr/ADR-0011-prd-environment.md); itens no [backlog](backlog.md#fase-4--promoção-a-prd).
+
+**Decisões de 2026-10-14:**
+- Sem endereço externo. Dois endereços na rede de casa, como em `dev`: `homelab.local` para o navegador do computador e `nip.io` para o celular.
+- Projeto Firebase próprio para `prd`, separado do `dev-financial-control`.
+- Backup diário com `pg_dump`, com uma cópia em `/data/backups` no mini PC e outra na pasta `backups` do Google Drive do responsável.
+- Carga inicial com os dados reais: bancos, contas com o saldo do dia, cartões, tipos de despesa, despesas fixas e só as parcelas que ainda não saíram. A planilha `finances-control - carga inicial prd`, no Drive do responsável, foi tirada da `cashflow 2025-2026` e é também o modelo da futura importação por CSV.
+- O cluster comporta `prd`: em 2026-10-14 o nó usava 7% de CPU e 36% de memória, e o sistema em `dev` ocupa cerca de 370 Mi.
+
+**Ordem:** projeto Firebase (FC-009) e manifests de `prd` (FC-010) em paralelo; depois o backup (FC-011); por último a carga (FCB-023) e a primeira promoção (FC-012).
+
+**Done when:**
+- [ ] Projeto Firebase de `prd` configurado (FC-009)
+- [ ] Backend, frontend e PostgreSQL de `prd` publicados pelo Argo CD em `prd-apps` (FC-010)
+- [ ] Backup diário rodando nas duas cópias e uma restauração testada (FC-011)
+- [ ] Planilha da carga revisada pelo responsável, com os campos `PREENCHER` preenchidos
+- [ ] Carga inicial feita em `prd` e conferida contra a planilha (FCB-023)
+- [ ] Primeira promoção de `develop` para `main` nos dois repositórios, com a checagem de fumaça verde (FC-012)
 
 ## Contínuo
 
 - Implementar pacotes `@bhs-dev` faltantes conforme a dor aparecer (`logger` e `middlewares` primeiro).
 - Alimentar ADRs a cada decisão relevante.
+- Importação por CSV no sistema, com a planilha da carga inicial de `prd` como modelo (depois da Fase 4).
