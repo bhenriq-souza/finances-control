@@ -169,6 +169,34 @@ Publicar o sistema em `prd`, só na rede de casa, com backup do PostgreSQL antes
 - [ ] Carga inicial feita em `prd` e conferida contra a planilha (FCB-023)
 - [ ] Primeira promoção de `develop` para `main` nos dois repositórios, com a checagem de fumaça verde (FC-012)
 
+## Fase 5 — Espaços e isolamento por usuário
+
+Hoje um usuário aprovado enxerga e altera os lançamentos, contas, bancos e cartões de todos: o RBAC do backend é por perfil, não por registro. Esta fase faz de cada usuário aprovado alguém com a sua própria conta no app: todo registro financeiro passa a pertencer a um **espaço**, e o usuário entra num espaço com um perfil. Contrato na spec `0021` do [backend](https://github.com/bhenriq-souza/finances-control-backend/blob/develop/specs/0021-workspaces.md) e do frontend; itens no [backlog](backlog.md#fase-5--espaços-e-isolamento-por-usuário).
+
+**Decisões de 2026-10-15:**
+- Espaço com membros (opção B): o perfil (`ADMIN`, `BILLER`, `VIEWER`) vale só dentro do espaço. A alternativa de dado por usuário foi descartada, porque um `VIEWER` não veria nada e ninguém poderia acompanhar as finanças de outra pessoa.
+- Dois níveis de permissão: o **admin da plataforma** aprova usuários, cria e renomeia espaços e cuida dos catálogos globais; o **perfil no espaço** segue a matriz atual dentro do espaço. Detalhes em [perfis de usuário](user-profiles.md).
+- Bancos continuam um catálogo global.
+- Tipos de despesa e de receita também são globais, geridos só pelo admin da plataforma: um tipo criado num espaço apareceria para todos. Tipos próprios de um espaço ficam para depois, sem quebrar nada.
+- A aprovação e a atribuição continuam como hoje; a concessão passa a dizer em qual espaço: um espaço novo, do qual o usuário vira `ADMIN`, ou um espaço existente, com um perfil.
+- Um espaço por usuário na Fase 5. Vários espaços por pessoa, com troca na tela, ficam para depois.
+- Os dados atuais vão para um espaço só, e quem hoje é `ADMIN` vira admin da plataforma.
+
+**Ondas de execução** (subagentes em worktrees, como nas fases anteriores):
+1. **Onda 0 — specs em paralelo:** este documento (FC-013), a spec `0021` e o ADR local de escopo no backend (FCB-025) e a spec `0021` do frontend (FCF-025).
+2. **Onda 1 — base no backend:** `T-0021-01`, sozinha: esquema, migração dos dados para um espaço, contexto da requisição e guardas. Bloqueia as demais tarefas do backend.
+3. **Onda 2 — módulos em paralelo:** `T-0021-02` a `T-0021-07` no backend (identity, contas e cartões, despesas, receitas, faturas e transferências, relatórios e carga) e `T-0021-01` no frontend, contra o contrato da spec.
+4. **Onda 3 — fechamento:** `T-0021-08` (suíte de isolamento por rota), tag do contrato do backend, verificação em `dev` com dois usuários reais em espaços diferentes e promoção a `prd` com backup antes da migration.
+
+**Done when:**
+- [ ] Specs `0021` do backend e do frontend e ADR local de escopo aprovados (FCB-025, FCF-025)
+- [ ] Base dos espaços no backend, com os dados existentes num espaço só (`T-0021-01`)
+- [ ] Todos os módulos do backend com escopo por espaço e a suíte de isolamento por rota no CI (`T-0021-02` a `T-0021-08`)
+- [ ] Tela de usuários com a aprovação em espaço novo ou existente e o nome do espaço no menu (FCF-025)
+- [ ] Tag nova do contrato do backend, fixada pelo frontend
+- [ ] Verificação em `dev` com dois usuários em espaços diferentes: nenhum vê nada do outro
+- [ ] Promoção a `prd`, com backup antes da migration, e os dados do responsável conferidos no espaço dele
+
 ## Contínuo
 
 - Implementar pacotes `@bhs-dev` faltantes conforme a dor aparecer (`logger` e `middlewares` primeiro).

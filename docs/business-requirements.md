@@ -13,6 +13,8 @@
 - O sistema deve garantir a segurança dos dados dos usuários, utilizando práticas de criptografia para proteger as informações sensíveis.
 - Usuários poderão fazer sign-up e login utilizando contas de redes sociais, inicialmente com o Google.
 - O usuário administrador deverá conceder os privilégios de acesso aos usuários.
+- Cada usuário aprovado tem o seu **espaço**, o equivalente a uma conta na plataforma: contas, cartões, despesas, receitas, faturas, transferências e relatórios de um espaço não são vistos por usuários de outro. Ao aprovar, o administrador da plataforma escolhe entre um espaço novo, do qual o usuário vira administrador, e um espaço existente, com um perfil (ver [perfis de usuário](user-profiles.md)).
+- Bancos e tipos de despesa e de receita formam catálogos comuns a todos os espaços, mantidos pelo administrador da plataforma.
 
 ### F002 — Cadastro de Bancos, Contas Bancárias e Cartões de Crédito
 
