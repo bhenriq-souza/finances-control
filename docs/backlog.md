@@ -140,6 +140,14 @@ Publicação em `prd`, só na rede de casa ([ADR-0011](adr/ADR-0011-prd-environm
 
 Pontos levantados pelo responsável no primeiro uso de `prd`, em 2026-10-15. Mesmo fluxo da Fase 3.1: PR de spec primeiro, depois a implementação.
 
-- [ ] **FCB-024 — Conferência da fatura** (backend) — [#198](https://github.com/bhenriq-souza/finances-control-backend/issues/198): spec `0020` nova: a marca **incluída** em cada despesa de cartão, como a coluna "Incluído" da planilha antiga, e na fatura o total conferido, que bate com a fatura do banco, e o pendente; marcar uma despesa prevista a confirma
-- [ ] **FCF-023 — Conferência da fatura** — [#166](https://github.com/bhenriq-souza/finances-control-frontend/issues/166): botão verde **Incluída** em cada despesa da fatura e o conferido e o pendente no topo; depende da FCB-024
+- [x] **FCB-024 — Conferência da fatura** (backend) — [#198](https://github.com/bhenriq-souza/finances-control-backend/issues/198): spec `0020` nova: a marca **incluída** em cada despesa de cartão, como a coluna "Incluído" da planilha antiga, e na fatura o total conferido, que bate com a fatura do banco, e o pendente; marcar uma despesa prevista a confirma
+- [x] **FCF-023 — Conferência da fatura** — [#166](https://github.com/bhenriq-souza/finances-control-frontend/issues/166): botão verde **Incluída** em cada despesa da fatura e o conferido e o pendente no topo; depende da FCB-024
+- [x] **FCF-024 — Previsto do Início com as faturas do mês** — [#171](https://github.com/bhenriq-souza/finances-control-frontend/issues/171): revisão da spec `0015`: o previsto do dashboard desconta as faturas que vencem no mês, como o fluxo de caixa; antes o Início mostrava o fim do mês sem a fatura em aberto
 
+## Fase 5 — Espaços e isolamento por usuário
+
+Pedido do responsável em 2026-10-15: hoje um usuário aprovado vê os registros de todos. Decisões e ondas no [roadmap](roadmap.md#fase-5--espaços-e-isolamento-por-usuário). Mesmo fluxo das fases anteriores: PR de spec primeiro, depois a implementação.
+
+- [ ] **FC-013 — Fase 5: espaços e isolamento por usuário** — [#38](https://github.com/bhenriq-souza/finances-control/issues/38): roadmap, backlog, [perfis de usuário](user-profiles.md) e requisitos de negócio com o espaço e os dois níveis de permissão
+- [ ] **FCB-025 — Espaços e isolamento** (backend) — [#205](https://github.com/bhenriq-souza/finances-control-backend/issues/205): spec `0021` nova e ADR local de escopo: `workspace_id` em toda tabela de domínio, com FKs compostas; perfil no membro do espaço; admin da plataforma para usuários, espaços e catálogos globais; registro de outro espaço responde `404`; suíte de isolamento por rota. Tarefas `T-0021-01` a `T-0021-08`
+- [ ] **FCF-025 — Espaços na tela de usuários** — [#176](https://github.com/bhenriq-souza/finances-control-frontend/issues/176): spec `0021` nova: aprovação em espaço novo ou existente, nome do espaço no menu, cadastro de bancos e tipos só para o admin da plataforma; depende do contrato da FCB-025
